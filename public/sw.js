@@ -4,11 +4,11 @@ const OFFLINE_URL = '/offline.html';
 const API_URL = 'https://api.example.com/data';
 const API_RESPONSE_FILE = '/apiCache.json';
 const FILES_TO_CACHE = [
-  '/offline.html',
-  '/favicon.ico',
-  '/img/hubt_logo_full_black.svg',
-  '/css/offline.css',
-  '/apiCache.json',
+  './offline.html',
+  './favicon.ico',
+  './img/hubt_logo_full_black.svg',
+  './css/offline.css',
+  './apiCache.json',
 ];
 
 console.log(self.__WB_MANIFEST);
