@@ -12,7 +12,9 @@
     "lint:css": "stylelint './src/**/styles.tsx' --fix",
     "preview": "vite preview",
     "postinstall": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
