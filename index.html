@@ -17,6 +17,7 @@
 
 <script>
   if('serviceWorker' in navigator) {
+    console.log('sw load');
     navigator.serviceWorker.register('./sw.js', {type: "module"})
   }
 </script>
