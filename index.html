@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="ico" href="/favicon.ico" />
-  <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+  <link rel="icon" type="ico" href="/pwa-test/favicon.ico" />
+  <link rel="manifest" href="/pwa-test/manifest.json" crossorigin="use-credentials" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FF4545" />
   <title>HUB't</title>
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
   <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
-</head>
+  <script type="module" crossorigin src="/pwa-test/assets/index-b62d48e4.js"></script>
+  <link rel="stylesheet" href="/pwa-test/assets/index-d4beff7b.css">
+<link rel="manifest" href="/pwa-test/manifest.webmanifest"></head>
 <body>
 <div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
+
 <script>
   if('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js', {type: "module"})
