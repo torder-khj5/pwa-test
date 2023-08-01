@@ -8,12 +8,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     console.log(`load sw ${import.meta.env.MODE}`);
-    navigator.serviceWorker.register('./sw.js', { scope: '/' });
+    navigator.serviceWorker.register('/sw.js', { scope: '/' });
   });
 }
 
 // if ('serviceWorker' in navigator) {
-//   const wb = new Workbox('/service-worker.js');
+//   const wb = new Workbox('/sw.ts');
 //
 //   wb.addEventListener('activated', (event) => {
 //     // 서비스 워커가 활성화된 후에 실행되는 로직
