@@ -7,17 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FF4545" />
   <title>HUB't</title>
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/pwa-test/icons/apple-touch-icon-152x152.png" />
-  <link rel="icon" type="image/png" href="/pwa-test/icons/favicon-128.png" sizes="128x128" />
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png" sizes="152x152">
 </head>
 <body>
 <div id="root"></div>
 <script type="module" src="/src/main.tsx"></script>
-<script>
-  if('serviceWorker' in navigator) {
-    console.log('sw load');
-    navigator.serviceWorker.register('/sw.ts', {type: "module"})
-  }
-</script>
+<!--<script>-->
+<!--  if('serviceWorker' in navigator) {-->
+<!--    console.log('sw load');-->
+<!--    navigator.serviceWorker.register('/sw.js', {type: "module"})-->
+<!--  }-->
+<!--</script>-->
 </body>
 </html>

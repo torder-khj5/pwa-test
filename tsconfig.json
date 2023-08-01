@@ -49,7 +49,6 @@
       "@i18n/*": ["src/i18n/*"]
     },
     "esModuleInterop": true,
-    "types": ["vite-plugin-pwa/client"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]

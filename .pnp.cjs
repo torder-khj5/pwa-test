@@ -39,7 +39,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:14.0.0"],\
             ["@testing-library/user-event", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:14.4.3"],\
-            ["@types/jest", "npm:29.5.2"],\
+            ["@types/jest", "npm:29.5.3"],\
+            ["@types/mocha", "npm:10.0.1"],\
             ["@types/node", "npm:20.4.5"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\
@@ -4923,6 +4924,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pretty-format", "npm:29.5.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:29.5.3", {\
+          "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.3-8fc40e94bc-e36bb92e0b.zip/node_modules/@types/jest/",\
+          "packageDependencies": [\
+            ["@types/jest", "npm:29.5.3"],\
+            ["expect", "npm:29.5.0"],\
+            ["pretty-format", "npm:29.5.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@types/js-levenshtein", [\
@@ -4969,6 +4979,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-minimist-npm-1.2.2-a445de65da-b8da83c66e.zip/node_modules/@types/minimist/",\
           "packageDependencies": [\
             ["@types/minimist", "npm:1.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/mocha", [\
+        ["npm:10.0.1", {\
+          "packageLocation": "./.yarn/cache/@types-mocha-npm-10.0.1-7c94e9e170-224ea9fce7.zip/node_modules/@types/mocha/",\
+          "packageDependencies": [\
+            ["@types/mocha", "npm:10.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -10148,7 +10167,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/jest-svg-transformer-virtual-e05884939e/0/cache/jest-svg-transformer-npm-1.0.0-f3651e7b28-773a9129bf.zip/node_modules/jest-svg-transformer/",\
           "packageDependencies": [\
             ["jest-svg-transformer", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:1.0.0"],\
-            ["@types/jest", "npm:29.5.2"],\
+            ["@types/jest", "npm:29.5.3"],\
             ["@types/react", "npm:18.2.6"],\
             ["jest", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:29.5.0"],\
             ["react", "npm:18.2.0"]\
@@ -13460,7 +13479,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:14.0.0"],\
             ["@testing-library/user-event", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:14.4.3"],\
-            ["@types/jest", "npm:29.5.2"],\
+            ["@types/jest", "npm:29.5.3"],\
+            ["@types/mocha", "npm:10.0.1"],\
             ["@types/node", "npm:20.4.5"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\

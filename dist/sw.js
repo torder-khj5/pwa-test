@@ -1,1 +1,47 @@
-if(!self.define){let e,s={};const i=(i,n)=>(i=new URL(i+".js",n).href,s[i]||new Promise((s=>{if("document"in self){const e=document.createElement("script");e.src=i,e.onload=s,document.head.appendChild(e)}else e=i,importScripts(i),s()})).then((()=>{let e=s[i];if(!e)throw new Error(`Module ${i} didn’t register its module`);return e})));self.define=(n,r)=>{const l=e||("document"in self?document.currentScript.src:"")||location.href;if(s[l])return;let d={};const o=e=>i(e,l),c={module:{uri:l},exports:d,require:o};s[l]=Promise.all(n.map((e=>c[e]||o(e)))).then((e=>(r(...e),d)))}}define(["./workbox-bf4e5af5"],(function(e){"use strict";self.addEventListener("message",(e=>{e.data&&"SKIP_WAITING"===e.data.type&&self.skipWaiting()})),e.precacheAndRoute([{url:"assets/index-1501609d.js",revision:null},{url:"assets/index-1775dbbf.js",revision:null},{url:"assets/index-6666e23b.js",revision:null},{url:"assets/index-aa0aad04.js",revision:null},{url:"assets/index-ae9a6327.js",revision:null},{url:"assets/index-b87f1ff5.js",revision:null},{url:"assets/index-cab2d093.css",revision:null},{url:"assets/index-d4beff7b.css",revision:null},{url:"assets/index-e7dd45cd.js",revision:null},{url:"assets/index-f2908477.js",revision:null},{url:"assets/index-f99bae73.js",revision:null},{url:"css/offline.css",revision:"167d58cb310f8d1afbee6224f0bb1bab"},{url:"index.html",revision:"a5797169a3d0608eb422b0cc4df3c184"},{url:"mockServiceWorker.js",revision:"4d9b9a6766b036c28723f7c4cd4596d9"},{url:"offline.html",revision:"d09e215b65e8776e0ae384121717835a"},{url:"registerSW.js",revision:"1872c500de691dce40960bb85481de07"},{url:"icons/logo-512x512.png",revision:"a99d5c422e40f4b6eb64546791a031a5"},{url:"icons/favicon-128.png",revision:"e3e8067d0439d36dcecb2b3cd7ff2aba"},{url:"icons/apple-touch-icon-152x152.png",revision:"fec816ed209497cac699a55220e5d8e0"},{url:"manifest.webmanifest",revision:"fcffd41ddf2023a11ede7c7b901ed3bb"}],{}),e.cleanupOutdatedCaches(),e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("index.html")))}));
+const t = "cache-v0.0.1", o = "/offline.html", n = "https://api.example.com/data", i = "/apiCache.json", r = [
+  "./offline.html",
+  "./favicon.ico",
+  "./img/hubt_logo_full_black.svg",
+  "./css/offline.css",
+  "./apiCache.json"
+];
+console.log([{"revision":null,"url":"assets/index-1a8f4b85.js"},{"revision":null,"url":"assets/index-58dacfb9.js"},{"revision":null,"url":"assets/index-71fac5f3.js"},{"revision":null,"url":"assets/index-7f7888d7.js"},{"revision":null,"url":"assets/index-8335b45c.js"},{"revision":null,"url":"assets/index-931a11d3.js"},{"revision":null,"url":"assets/index-c95b6f6c.js"},{"revision":null,"url":"assets/index-cab2d093.css"},{"revision":null,"url":"assets/index-d4beff7b.css"},{"revision":null,"url":"assets/index-f2a4eed6.js"},{"revision":null,"url":"assets/index-fdc8f74e.js"},{"revision":"167d58cb310f8d1afbee6224f0bb1bab","url":"css/offline.css"},{"revision":"24c654b57539efd56db481d10946375b","url":"index.html"},{"revision":"4d9b9a6766b036c28723f7c4cd4596d9","url":"mockServiceWorker.js"},{"revision":"d09e215b65e8776e0ae384121717835a","url":"offline.html"},{"revision":"a99d5c422e40f4b6eb64546791a031a5","url":"icons/logo-512x512.png"},{"revision":"e3e8067d0439d36dcecb2b3cd7ff2aba","url":"icons/favicon-128.png"},{"revision":"285180f69e5ecad7ac34b1dcb2b4bc53","url":"apiCache.json"},{"revision":"a93cd3c7ee89f57c409c3da1250a4b5e","url":"favicon.ico"},{"revision":"a563cb70c3714cb5db68adb7de769993","url":"manifest.json"},{"revision":"4d9b9a6766b036c28723f7c4cd4596d9","url":"mockServiceWorker.js"},{"revision":"d09e215b65e8776e0ae384121717835a","url":"offline.html"},{"revision":"f71d20196d4caf35b6a670db8c70b03d","url":"robots.txt"},{"revision":"6383ff87ac81d263c4f8791d8a740f6d","url":"sw.js"},{"revision":"f1568a5956ccae1917242d27b589f96e","url":"sw.ts"},{"revision":"167d58cb310f8d1afbee6224f0bb1bab","url":"css/offline.css"},{"revision":"fec816ed209497cac699a55220e5d8e0","url":"icons/apple-touch-icon-152x152.png"},{"revision":"44361f12da5a85d3650f6b7c76637edd","url":"img/hubt_logo_full_black.svg"},{"revision":"c018fe319fe908f268cc8340c919f577","url":"img/hubt_logo_full_white.svg"},{"revision":"141ab57d3edfae39da34c07a2de3b18f","url":"manifest.webmanifest"}]);
+self.addEventListener("message", (e) => {
+  e.data && e.data.type === "SKIP_WAITING" && self.skipWaiting();
+});
+self.addEventListener("install", async (e) => {
+  e.waitUntil(caches.open(t).then((a) => a.addAll(r)));
+});
+self.addEventListener("fetch", (e) => {
+  e.request.mode === "navigate" ? e.respondWith(
+    (async () => {
+      try {
+        const a = await e.preloadResponse;
+        return a || await fetch(e.request);
+      } catch {
+        return await (await caches.open(t)).match(o);
+      }
+    })()
+  ) : e.request.url === n ? e.respondWith(
+    (async () => {
+      try {
+        const a = await fetch(e.request);
+        return a && a.ok && (await caches.open(t)).put(n, a.clone()), a;
+      } catch {
+        const c = await (await caches.open(t)).match(i);
+        return c || new Response("Network request failed and no cached response available.", {
+          status: 503,
+          statusText: "Service Unavailable",
+          headers: new Headers({
+            "Content-Type": "text/plain"
+          })
+        });
+      }
+    })()
+  ) : e.respondWith(
+    (async () => await (await caches.open(t)).match(e.request) || fetch(e.request))()
+  );
+});
+self.addEventListener("activate", (e) => {
+  e.waitUntil(self.clients.claim());
+});

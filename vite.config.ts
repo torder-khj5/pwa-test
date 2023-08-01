@@ -4,8 +4,7 @@ import react from '@vitejs/plugin-react-swc';
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 
 const pwaOptions: Partial<VitePWAOptions> = {
-  base: '/',
-  includeAssets: ['**/*'],
+  includeAssets: ['**/*.{js,css,html,ico,png,svg}'],
   manifest: {
     name: 'Hubtorder',
     short_name: 'Hubt',
@@ -38,6 +37,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
   },
 
   injectRegister: false,
+  registerType: 'autoUpdate',
   workbox: {
     globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
   },
@@ -47,5 +47,6 @@ const pwaOptions: Partial<VitePWAOptions> = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // base: '/pwa-test',
   plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), VitePWA(pwaOptions)],
 });
