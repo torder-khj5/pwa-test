@@ -35,11 +35,11 @@ const pwaOptions: Partial<VitePWAOptions> = {
     type: 'module',
     navigateFallback: 'index.html',
   },
-
   injectRegister: false,
   registerType: 'autoUpdate',
   workbox: {
     globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+    swDest: 'dist/sw.js',
   },
   strategies: 'injectManifest',
   filename: 'sw.js',
@@ -47,5 +47,9 @@ const pwaOptions: Partial<VitePWAOptions> = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  assetsInclude: ['@assets/**'],
+  build: {
+    assetsDir: 'src/assets'
+  },
   plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), VitePWA(pwaOptions)],
 });

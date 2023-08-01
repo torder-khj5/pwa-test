@@ -82,7 +82,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vite", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:4.3.8"],\
             ["vite-plugin-pwa", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:0.16.4"],\
             ["vite-tsconfig-paths", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:4.2.0"],\
+            ["workbox-cacheable-response", "npm:7.0.0"],\
             ["workbox-core", "npm:7.0.0"],\
+            ["workbox-expiration", "npm:7.0.0"],\
             ["workbox-precaching", "npm:7.0.0"],\
             ["workbox-routing", "npm:7.0.0"],\
             ["workbox-strategies", "npm:7.0.0"],\
@@ -13522,7 +13524,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vite", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:4.3.8"],\
             ["vite-plugin-pwa", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:0.16.4"],\
             ["vite-tsconfig-paths", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:4.2.0"],\
+            ["workbox-cacheable-response", "npm:7.0.0"],\
             ["workbox-core", "npm:7.0.0"],\
+            ["workbox-expiration", "npm:7.0.0"],\
             ["workbox-precaching", "npm:7.0.0"],\
             ["workbox-routing", "npm:7.0.0"],\
             ["workbox-strategies", "npm:7.0.0"],\

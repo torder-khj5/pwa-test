@@ -1,104 +1,221 @@
-// import { precacheAndRoute } from 'workbox-precaching';
-const CACHE_NAME = 'cache-v0.0.1';
+// const CACHE_NAME = 'cache-v0.0.1';
+//
+// const OFFLINE_URL = '/offline.html';
+// const API_URL = 'https://api.example.com/data';
+// const API_RESPONSE_FILE = '/apiCache.json';
+// const FILES_TO_CACHE = [
+//   './offline.html',
+//   './favicon.ico',
+//   './img/hubt_logo_full_black.svg',
+//   './css/offline.css',
+//   './apiCache.json',
+// ];
+//
+// console.log(self.__WB_MANIFEST);
+//
+// self.addEventListener('message', (event) => {
+//   if (event.data && event.data.type === 'SKIP_WAITING') {
+//     self.skipWaiting();
+//   }
+// });
+//
+// self.addEventListener('install', async (event) => {
+//   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE)));
+//   // API 데이터를 캐시에 미리 저장
+//   // event.waitUntil(
+//   //   fetch(API_URL)
+//   //     .then((res) => {
+//   //       return caches.open(CACHE_NAME).then((cache) => {
+//   //         return cache.put(API_URL, res);
+//   //       });
+//   //     })
+//   //     .catch((error) => {
+//   //       console.error('Failed to cache API data:', error);
+//   //     })
+//   // );
+// });
+//
+// self.addEventListener('fetch', (event) => {
+//   if (event.request.mode === 'navigate') {
+//     event.respondWith(
+//       (async () => {
+//         try {
+//           const preloadResp = await event.preloadResponse;
+//
+//           if (preloadResp) {
+//             return preloadResp;
+//           }
+//
+//           return await fetch(event.request);
+//         } catch (error) {
+//           const cache = await caches.open(CACHE_NAME);
+//           return await cache.match(OFFLINE_URL);
+//         }
+//       })()
+//     );
+//   }
+//   else if (event.request.url === API_URL) {
+//     event.respondWith(
+//       (async () => {
+//         try {
+//           const networkResp = await fetch(event.request);
+//
+//           // 성공적인 API 응답인 경우, 응답을 캐시에 저장
+//           if (networkResp && networkResp.ok) {
+//             const cache = await caches.open(CACHE_NAME);
+//             cache.put(API_URL, networkResp.clone());
+//           }
+//
+//           return networkResp;
+//         } catch (error) {
+//           // 네트워크 요청이 실패하는 경우, 캐시된 응답을 리턴
+//           const cache = await caches.open(CACHE_NAME);
+//           const cachedResponse = await cache.match(API_RESPONSE_FILE);
+//           if (cachedResponse) {
+//             return cachedResponse;
+//           }
+//
+//           // 캐시된 응답도 없을 경우, 에러 응답을 반환
+//           return new Response('Network request failed and no cached response available.', {
+//             status: 503,
+//             statusText: 'Service Unavailable',
+//             headers: new Headers({
+//               'Content-Type': 'text/plain',
+//             }),
+//           });
+//         }
+//       })()
+//     );
+//   }
+//   else {
+//     // 다른 요청에 대해서는 네트워크로 직접 처리하거나 오프라인 상태일 때 캐시에서 가져옴
+//     event.respondWith(
+//       (async () => {
+//         const cache = await caches.open(CACHE_NAME);
+//         const cachedResponse = await cache.match(event.request);
+//         return cachedResponse || fetch(event.request);
+//       })()
+//     );
+//   }
+//
+//   console.log(event.request.url);
+//   if (event.request.url === '/login') {
+//     console.log('login cache');
+//     event.respondWith(caches.match(event.request));
+//   }
+// });
+//
+// self.addEventListener('activate', (event) => {
+//   event.waitUntil(self.clients.claim());
+// });
 
-const OFFLINE_URL = '/offline.html';
-const API_URL = 'https://api.example.com/data';
-const API_RESPONSE_FILE = '/apiCache.json';
-const FILES_TO_CACHE = [
-  './offline.html',
-  './favicon.ico',
-  './img/hubt_logo_full_black.svg',
-  './css/offline.css',
-  './apiCache.json',
-];
 
-console.log(self.__WB_MANIFEST);
-// precacheAndRoute(self.__WB_MANIFEST);
+// add
+/* eslint-disable no-restricted-globals */
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+// This service worker can be customized!
+// See https://developers.google.com/web/tools/workbox/modules
+// for the list of available Workbox modules, or add any other
+// code you'd like.
+// You can also remove this file if you'd prefer not to use a
+// service worker, and the Workbox build step will be skipped.
 
-self.addEventListener('install', async (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE)));
-  // API 데이터를 캐시에 미리 저장
-  // event.waitUntil(
-  //   fetch(API_URL)
-  //     .then((res) => {
-  //       return caches.open(CACHE_NAME).then((cache) => {
-  //         return cache.put(API_URL, res);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error('Failed to cache API data:', error);
-  //     })
-  // );
-});
+import { clientsClaim } from 'workbox-core';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { precacheAndRoute } from 'workbox-precaching';
+import { registerRoute } from 'workbox-routing';
+import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
+import {CacheableResponsePlugin} from 'workbox-cacheable-response';
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      (async () => {
-        try {
-          const preloadResp = await event.preloadResponse;
+clientsClaim();
 
-          if (preloadResp) {
-            return preloadResp;
-          }
+/**
+ * We are not wrapping it in a 'message' event as per the new update.
+ * @see https://developers.google.com/web/tools/workbox/modules/workbox-core
+ */
+self.skipWaiting();
 
-          return await fetch(event.request);
-        } catch (error) {
-          const cache = await caches.open(CACHE_NAME);
-          return await cache.match(OFFLINE_URL);
-        }
-      })()
-    );
-  } else if (event.request.url === API_URL) {
-    event.respondWith(
-      (async () => {
-        try {
-          const networkResp = await fetch(event.request);
+/**
+ * Precache all of the assets generated by your build process.
+ * Their URLs are injected into the manifest variable below.
+ * This variable must be present somewhere in your service worker file,
+ * even if you decide not to use precaching. See https://cra.link/PWA
+ */
+precacheAndRoute(self.__WB_MANIFEST);
 
-          // 성공적인 API 응답인 경우, 응답을 캐시에 저장
-          if (networkResp && networkResp.ok) {
-            const cache = await caches.open(CACHE_NAME);
-            cache.put(API_URL, networkResp.clone());
-          }
+// Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
+// @see https://developers.google.com/web/tools/workbox/guides/common-recipes#google_fonts
+registerRoute(
+  ({url}) => url.origin === 'https://fonts.googleapis.com',
+  new StaleWhileRevalidate({
+    cacheName: 'google-fonts-stylesheets',
+  })
+);
 
-          return networkResp;
-        } catch (error) {
-          // 네트워크 요청이 실패하는 경우, 캐시된 응답을 리턴
-          const cache = await caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match(API_RESPONSE_FILE);
-          if (cachedResponse) {
-            return cachedResponse;
-          }
+// Cache the underlying font files with a cache-first strategy for 1 year.
+// @see https://developers.google.com/web/tools/workbox/guides/common-recipes#google_fonts
+registerRoute(
+  ({url}) => url.origin === 'https://fonts.gstatic.com',
+  new CacheFirst({
+    cacheName: 'google-fonts-webfonts',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 30,
+      }),
+    ],
+  })
+);
 
-          // 캐시된 응답도 없을 경우, 에러 응답을 반환
-          return new Response('Network request failed and no cached response available.', {
-            status: 503,
-            statusText: 'Service Unavailable',
-            headers: new Headers({
-              'Content-Type': 'text/plain',
-            }),
-          });
-        }
-      })()
-    );
-  } else {
-    // 다른 요청에 대해서는 네트워크로 직접 처리하거나 오프라인 상태일 때 캐시에서 가져옴
-    event.respondWith(
-      (async () => {
-        const cache = await caches.open(CACHE_NAME);
-        const cachedResponse = await cache.match(event.request);
-        return cachedResponse || fetch(event.request);
-      })()
-    );
-  }
-});
+/**
+ * Move api.
+ *
+ * Caches at: runtime
+ */
+// registerRoute(
+//   ({url}) => url.origin === 'https://api.themoviedb.org' &&
+//     url.pathname.startsWith('/3/discover/tv'),
+//   new StaleWhileRevalidate({
+//     cacheName: 'movie-api-response',
+//     plugins: [
+//       new CacheableResponsePlugin({
+//         statuses: [0, 200],
+//       }),
+//       new ExpirationPlugin({maxEntries: 1}), // Will cache maximum 1 requests.
+//     ]
+//   })
+// );
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
-});
+/**
+ * We use CacheFirst for images because, images are not going to change very often,
+ * so it does not make sense to revalidate images on every request.
+ *
+ * @see https://developers.google.com/web/tools/workbox/guides/common-recipes#caching_images
+ */
+registerRoute(
+  ({request}) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'images',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      }),
+    ],
+  }),
+);
+
+// @see https://developers.google.com/web/tools/workbox/guides/common-recipes#cache_css_and_javascript_files
+registerRoute(
+  ({request}) => request.destination === 'script' ||
+    request.destination === 'style',
+  new StaleWhileRevalidate({
+    cacheName: 'static-resources',
+  })
+);
