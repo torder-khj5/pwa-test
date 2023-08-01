@@ -1,3 +1,4 @@
+// import { precacheAndRoute } from 'workbox-precaching';
 const CACHE_NAME = 'cache-v0.0.1';
 
 const OFFLINE_URL = '/offline.html';
@@ -12,6 +13,7 @@ const FILES_TO_CACHE = [
 ];
 
 console.log(self.__WB_MANIFEST);
+// precacheAndRoute(self.__WB_MANIFEST);
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
@@ -22,17 +24,17 @@ self.addEventListener('message', (event) => {
 self.addEventListener('install', async (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE)));
   // API 데이터를 캐시에 미리 저장
-  event.waitUntil(
-    fetch(API_URL)
-      .then((res) => {
-        return caches.open(CACHE_NAME).then((cache) => {
-          return cache.put(API_URL, res);
-        });
-      })
-      .catch((error) => {
-        console.error('Failed to cache API data:', error);
-      })
-  );
+  // event.waitUntil(
+  //   fetch(API_URL)
+  //     .then((res) => {
+  //       return caches.open(CACHE_NAME).then((cache) => {
+  //         return cache.put(API_URL, res);
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to cache API data:', error);
+  //     })
+  // );
 });
 
 self.addEventListener('fetch', (event) => {
