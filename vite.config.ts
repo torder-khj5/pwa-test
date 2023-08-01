@@ -48,13 +48,5 @@ const pwaOptions: Partial<VitePWAOptions> = {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/pwa-test',
-  build: {
-    rollupOptions: {
-      input: {
-        main: './index.html',
-        sw: './sw.js',
-      },
-    },
-  },
   plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), VitePWA(pwaOptions)],
 });
