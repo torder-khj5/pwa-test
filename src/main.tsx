@@ -8,7 +8,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     console.log(`load sw ${import.meta.env.MODE}`);
-    navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    // navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    navigator.serviceWorker.register('/src-sw.js', { scope: '/' });
   });
 }
 

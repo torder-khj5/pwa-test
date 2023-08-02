@@ -39,10 +39,10 @@ const pwaOptions: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
   workbox: {
     globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-    swDest: 'dist/sw.js',
+    swDest: 'dist/src-sw.js',
   },
   strategies: 'injectManifest',
-  filename: 'sw.js',
+  // filename: 'src-sw.js',
 };
 
 // https://vitejs.dev/config/

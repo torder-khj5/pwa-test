@@ -100,9 +100,3 @@
 // self.addEventListener('activate', (event) => {
 //   event.waitUntil(self.clients.claim());
 // });
-
-// import { precacheAndRoute } from 'workbox-precaching';
-//
-// declare let self: ServiceWorkerGlobalScope & typeof globalThis;
-//
-// precacheAndRoute(self.__WB_MANIFEST);
