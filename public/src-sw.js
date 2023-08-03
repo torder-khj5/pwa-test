@@ -11,6 +11,7 @@ precacheAndRoute([
   { url: '/login', revision: '1' },
   { url: '/notice', revision: '1' },
   // 다른 페이지들을 캐싱하려면 여기에 경로를 추가
+  ...self.__WB_MANIFEST,
 ]);
 
 // 모든 페이지 캐싱 (Stale-While-Revalidate 전략)

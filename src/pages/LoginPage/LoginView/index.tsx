@@ -36,6 +36,13 @@ export default function LoginView() {
     }
   }
 
+  function onClickBtn() {
+    if (window.android) {
+      window.android.showToastMessage('Hello Native Callback');
+      window.android.callJavaScriptFunction();
+    }
+  }
+
   return (
     <>
       <S.LoginWrapper>
@@ -75,7 +82,7 @@ export default function LoginView() {
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
           <S.ExternalSpan>비밀번호 찾기</S.ExternalSpan>
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
-          <S.ExternalSpan>회원가입</S.ExternalSpan>
+          <S.ExternalSpan onClick={onClickBtn}>회원가입</S.ExternalSpan>
         </S.ExternalWrapper>
         <S.SocialLoginWrapper>
           <S.SocialLoginTitle>
