@@ -41,7 +41,7 @@ export default function LoginView() {
     const androidInterface = (window as any).Android;
     if (androidInterface) {
       console.log('android click!!');
-      window.Android.showToastMessage('Hello Native Callback');
+      window.Android.showAndroidToast('Hello Native Callback');
       window.Android.callJavaScriptFunction();
     }
   };
