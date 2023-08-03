@@ -38,9 +38,10 @@ export default function LoginView() {
 
   const onClickBtn = () => {
     console.log('click!!');
-    if (window.android) {
-      window.android.showToastMessage('Hello Native Callback');
-      window.android.callJavaScriptFunction();
+    if (window.Android) {
+      console.log('android click!!');
+      window.Android.showToastMessage('Hello Native Callback');
+      window.Android.callJavaScriptFunction();
     }
   };
 
