@@ -6,10 +6,10 @@ const { StaleWhileRevalidate, CacheFirst } = workbox.strategies;
 
 // 캐시할 파일 목록
 precacheAndRoute([
-  { url: '/', revision: '1' },
-  { url: '/index.html', revision: '1' },
-  { url: '/login', revision: '1' },
-  { url: '/notice', revision: '1' },
+  { url: '/', revision: '2' },
+  { url: '/index.html', revision: '2' },
+  { url: '/login', revision: '2' },
+  { url: '/notice', revision: '2' },
   // 다른 페이지들을 캐싱하려면 여기에 경로를 추가
   ...self.__WB_MANIFEST,
 ]);
