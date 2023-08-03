@@ -36,13 +36,60 @@ export default function LoginView() {
     }
   }
 
-  const onClickBtn = () => {
+  const onClickBtn = async () => {
     console.log('click!!');
     const androidInterface = (window as any).Android;
     if (androidInterface) {
       console.log('android click!!');
-      window.Android.showToast('Hello Native Callback');
-      // window.Android.callJavaScriptFunction();
+      const { usage, quota } = await checkSize();
+      // window.Android.showToast('Hello Native Callback');
+      window.Android.showToast('남은용량:' + quota);
+    }
+  };
+
+  type Quota = {
+    usage: number;
+    quota: number;
+  };
+
+  const checkSize = async (): Promise<Quota> => {
+    if (navigator?.storage && navigator.storage.estimate) {
+      try {
+        const quota = await navigator.storage.estimate();
+
+        if (quota.usage !== undefined && quota.quota !== undefined) {
+          // quota.usage -> 사용 중인 용량(byte)
+          // quota.quota -> 사용할 수 있는 전체 용량(byte)
+          const percentageUsed = (quota.usage / quota.quota) * 100;
+          console.log(`사용할 수 있는 용량의 ${percentageUsed}%를 사용하고 있습니다.`);
+          const remaining = quota.quota - quota.usage;
+          console.log(`앞으로 ${remaining} 바이트를 더 사용할 수 있습니다.`);
+          const bytesInGigabyte = 1073741824;
+          const sizeInGigabytes = remaining / bytesInGigabyte;
+
+          return {
+            usage: quota.usage,
+            quota: sizeInGigabytes,
+          };
+        } else {
+          console.error('Unable to get storage quota information.');
+          return {
+            usage: 0,
+            quota: 0,
+          };
+        }
+      } catch (error) {
+        console.error('Error estimating storage:', error);
+        return {
+          usage: 0,
+          quota: 0,
+        };
+      }
+    } else {
+      return {
+        usage: 0,
+        quota: 0,
+      };
     }
   };
 
@@ -81,11 +128,11 @@ export default function LoginView() {
           <CommonButton label="로그인" onButtonClick={onLoginClickHandler} btnSize="lg" className="button-resize" />
         </S.ButtonWrapper>
         <S.ExternalWrapper>
-          <S.ExternalSpan onClick={onClickBtn}>아이디 찾기</S.ExternalSpan>
+          <S.ExternalSpan>아이디 찾기</S.ExternalSpan>
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
-          <S.ExternalSpan onClick={onClickBtn}>비밀번호 찾기</S.ExternalSpan>
+          <S.ExternalSpan>비밀번호 찾기</S.ExternalSpan>
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
-          <S.ExternalSpan onClick={onClickBtn}>회원가입</S.ExternalSpan>
+          <S.ExternalSpan onClick={() => onClickBtn}>회원가입</S.ExternalSpan>
         </S.ExternalWrapper>
         <S.SocialLoginWrapper>
           <S.SocialLoginTitle>

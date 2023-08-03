@@ -13,25 +13,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// if ('serviceWorker' in navigator) {
-//   const wb = new Workbox('/sw.ts');
-//
-//   wb.addEventListener('activated', (event) => {
-//     // 서비스 워커가 활성화된 후에 실행되는 로직
-//     console.log('Service Worker activated:', event.isUpdate);
-//   });
-//
-//   wb.register()
-//     .then((registration) => {
-//       // 서비스 워커 등록 성공 시 실행되는 로직
-//       console.log('Service Worker registered:', registration);
-//     })
-//     .catch((error) => {
-//       // 서비스 워커 등록 실패 시 실행되는 로직
-//       console.error('Service Worker registration failed:', error);
-//     });
-// }
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
