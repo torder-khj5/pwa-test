@@ -49,7 +49,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
 export default defineConfig({
   assetsInclude: ['@assets/**'],
   build: {
-    assetsDir: 'src/assets'
+    assetsDir: 'src/assets',
   },
   plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), VitePWA(pwaOptions)],
 });
