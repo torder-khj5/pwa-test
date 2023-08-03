@@ -51,6 +51,7 @@ export const ExternalSpan = styled.span`
   font-weight: 500;
   letter-spacing: -0.75px;
   cursor: pointer;
+  border: 1px solid black;
 `;
 
 export const ExternalSpanDivider = styled.span`

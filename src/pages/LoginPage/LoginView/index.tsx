@@ -36,13 +36,13 @@ export default function LoginView() {
     }
   }
 
-  function onClickBtn() {
+  const onClickBtn = () => {
     console.log('click!!');
     if (window.android) {
       window.android.showToastMessage('Hello Native Callback');
       window.android.callJavaScriptFunction();
     }
-  }
+  };
 
   return (
     <>
@@ -79,11 +79,11 @@ export default function LoginView() {
           <CommonButton label="로그인" onButtonClick={onLoginClickHandler} btnSize="lg" className="button-resize" />
         </S.ButtonWrapper>
         <S.ExternalWrapper>
-          <S.ExternalSpan onClick={() => onClickBtn}>아이디 찾기</S.ExternalSpan>
+          <S.ExternalSpan onClick={onClickBtn}>아이디 찾기</S.ExternalSpan>
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
-          <S.ExternalSpan onClick={() => onClickBtn}>비밀번호 찾기</S.ExternalSpan>
+          <S.ExternalSpan onClick={onClickBtn}>비밀번호 찾기</S.ExternalSpan>
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
-          <S.ExternalSpan onClick={() => onClickBtn}>회원가입</S.ExternalSpan>
+          <S.ExternalSpan onClick={onClickBtn}>회원가입</S.ExternalSpan>
         </S.ExternalWrapper>
         <S.SocialLoginWrapper>
           <S.SocialLoginTitle>
