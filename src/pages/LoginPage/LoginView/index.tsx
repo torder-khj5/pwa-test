@@ -38,10 +38,11 @@ export default function LoginView() {
 
   const onClickBtn = () => {
     console.log('click!!');
-    if (window.android) {
+    const androidInterface = (window as any).Android;
+    if (androidInterface) {
       console.log('android click!!');
-      window.android.showToastMessage('Hello Native Callback');
-      window.android.callJavaScriptFunction();
+      window.Android.showToastMessage('Hello Native Callback');
+      window.Android.callJavaScriptFunction();
     }
   };
 
