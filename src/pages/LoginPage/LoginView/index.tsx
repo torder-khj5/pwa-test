@@ -41,15 +41,28 @@ export default function LoginView() {
     }
   }
 
-  const onClickBtn = async () => {
+  // const onClickBtn = async () => {
+  // console.log('click!!');
+  // const androidInterface = (window as any).Android;
+  // if (androidInterface) {
+  //   console.log('android click!!');
+  //   const { remain } = await getStorageInfo();
+  //   console.log(remain);
+  //   window.Android.showToast(`앞으로 ${remain} GB 사용할 수 있습니다.`);
+  //   window.Android.showToast('Hello Native Callback');
+  // }
+  // };
+
+  const onClickBtn = () => {
     console.log('click!!');
     const androidInterface = (window as any).Android;
     if (androidInterface) {
       console.log('android click!!');
-      const { remain } = await getStorageInfo();
-      console.log(remain);
-      window.Android.showToast(`앞으로 ${remain} GB 사용할 수 있습니다.`);
-      window.Android.showToast('Hello Native Callback');
+      getStorageInfo().then(({ remain }) => {
+        console.log(remain);
+        window.Android.showToast(`앞으로 ${remain} GB 사용할 수 있습니다.`);
+        window.Android.showToast('Hello Native Callback');
+      });
     }
   };
 
@@ -122,7 +135,7 @@ export default function LoginView() {
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
           <S.ExternalSpan>비밀번호 찾기</S.ExternalSpan>
           <S.ExternalSpanDivider>|</S.ExternalSpanDivider>
-          <S.ExternalSpan onClick={() => onClickBtn}>회원가입</S.ExternalSpan>
+          <S.ExternalSpan onClick={onClickBtn}>회원가입</S.ExternalSpan>
         </S.ExternalWrapper>
         <S.SocialLoginWrapper>
           <S.SocialLoginTitle>
