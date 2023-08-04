@@ -10,8 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function bytesToGB(bytes: number): number {
-  const gb = bytes / (1024 * 1024 * 1024);
-  return gb;
+  return bytes / (1024 * 1024 * 1024);
 }
 
 export default function LoginView() {
@@ -74,18 +73,19 @@ export default function LoginView() {
         console.log(`사용할 수 있는 용량의 ${percentageUsed.toFixed(2)}%를 사용하고 있습니다.`);
 
         const remaining = quota.quota - quota.usage;
-        const bytes = 296630877388;
-        const gb = bytesToGB(bytes);
+        const gb = bytesToGB(remaining);
         console.log(`앞으로 ${remaining} 바이트 / ${gb.toFixed(2)} GB 사용할 수 있습니다.`);
         return {
           remain: gb.toFixed(2),
         };
       } else {
+        console.log('no storage');
         return {
           remain: '0',
         };
       }
     } else {
+      console.log('no navigaator.storage');
       return {
         remain: '0',
       };
