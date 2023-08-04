@@ -7,7 +7,12 @@ import { CommonButton } from '@components/CommonButton';
 import Icon from '@components/@shared/Icon';
 import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+function bytesToGB(bytes: number): number {
+  const gb = bytes / (1024 * 1024 * 1024);
+  return gb;
+}
 
 export default function LoginView() {
   const { value: idInputValue, onChange: idInputHandler } = useInput('');
@@ -44,6 +49,35 @@ export default function LoginView() {
       window.Android.showToast('Hello Native Callback');
     }
   };
+
+  useEffect(() => {
+    const getStorageInfo = async () => {
+      if (navigator?.storage && navigator.storage.estimate) {
+        const quota = await navigator.storage.estimate();
+        if (quota?.usage !== undefined && quota?.quota !== undefined) {
+          const percentageUsed = (quota.usage / quota.quota) * 100;
+          console.log(`사용할 수 있는 용량의 ${percentageUsed.toFixed(2)}%를 사용하고 있습니다.`);
+
+          const remaining = quota.quota - quota.usage;
+          console.log(`앞으로 ${remaining} 바이트를 더 사용할 수 있습니다.`);
+
+          const bytes = 296630877388;
+          const gb = bytesToGB(bytes);
+          console.log(`${bytes} 바이트는 약 ${gb.toFixed(2)} GB 입니다.`);
+        }
+      }
+    };
+
+    getStorageInfo();
+
+    // 안녕하세요
+    // 대표님
+    // 현재 제 포지션 관련해서 문의 드립니다.
+    // 조직 분리가 되어 티오더3 산하의 프론트 엔드팀에 속해 있는데
+    // 별도의 프론트엔드팀이 아니라 TF 산하로 관리되는 건가요?
+    // 프론트엔드팀의 KPI를 따로 작성하면 되는것인지 티오더3팀으로 KPI 산출을 사미님이 제출하시는게 맞는지
+    // 티오더3 프론트엔드팀은 제가 관리하고 있는데 Pro 로 직책이 되어 있어서요
+  }, []);
 
   return (
     <>
