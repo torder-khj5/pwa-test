@@ -42,7 +42,7 @@ const MENU_LIST = [
     name: '기타 설정',
     subCategories: [
       { id: '기타1', name: '기타1', to: '/faq' },
-      { id: '기타2', name: '기타2', to: '/cert' },
+      { id: '상품 이미지', name: '상품 이미지', to: '/items' },
     ],
   },
 ];

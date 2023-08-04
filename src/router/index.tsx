@@ -12,6 +12,7 @@ const CertificationPage = lazy(async () => await import('@pages/CertificationPag
 const NoticePage = lazy(async () => await import('@pages/NoticePage'));
 const FAQPage = lazy(async () => await import('@pages/FAQPage'));
 const TestPage = lazy(async () => await import('@pages/TestPage'));
+const ItemsPage = lazy(async () => await import('@pages/ItemsPage'));
 
 // if (import.meta.env.MODE === 'development') {
 //   await initMocks();
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: 'faq',
         element: <FAQPage />,
+      },
+      {
+        path: 'items',
+        element: <ItemsPage />,
       },
     ],
   },
