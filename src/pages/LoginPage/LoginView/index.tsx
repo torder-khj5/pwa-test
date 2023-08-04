@@ -48,7 +48,7 @@ export default function LoginView() {
       console.log('android click!!');
       const { remain } = await getStorageInfo();
       console.log(remain);
-      window.Android.showToast('남았습니다.');
+      window.Android.showToast(`앞으로 ${remain} GB 사용할 수 있습니다.`);
       window.Android.showToast('Hello Native Callback');
     }
   };
