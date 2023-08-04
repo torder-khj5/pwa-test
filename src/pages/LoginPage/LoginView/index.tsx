@@ -7,7 +7,7 @@ import { CommonButton } from '@components/CommonButton';
 import Icon from '@components/@shared/Icon';
 import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function bytesToGB(bytes: number): number {
   return bytes / (1024 * 1024 * 1024);
@@ -39,18 +39,6 @@ export default function LoginView() {
       setIsError('에러메세지 노출.');
     }
   }
-
-  // const onClickBtn = async () => {
-  // console.log('click!!');
-  // const androidInterface = (window as any).Android;
-  // if (androidInterface) {
-  //   console.log('android click!!');
-  //   const { remain } = await getStorageInfo();
-  //   console.log(remain);
-  //   window.Android.showToast(`앞으로 ${remain} GB 사용할 수 있습니다.`);
-  //   window.Android.showToast('Hello Native Callback');
-  // }
-  // };
 
   const onClickBtn = () => {
     console.log('click!!');
@@ -91,10 +79,6 @@ export default function LoginView() {
       };
     }
   };
-
-  useEffect(() => {
-    getStorageInfo();
-  }, []);
 
   return (
     <>
