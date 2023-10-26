@@ -42,6 +42,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
     swDest: 'dist/sw.js',
   },
   strategies: 'injectManifest',
+  filename: 'sw.js',
 };
 
 // https://vitejs.dev/config/
