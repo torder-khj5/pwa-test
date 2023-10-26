@@ -73,6 +73,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"],\
             ["react-router-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:6.11.2"],\
+            ["rollup-plugin-node-polyfills", "npm:0.2.1"],\
             ["socket.io-client", "npm:4.6.1"],\
             ["stylelint", "npm:15.10.1"],\
             ["stylelint-config-standard", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:34.0.0"],\
@@ -8007,6 +8008,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["estree-walker", [\
+        ["npm:0.6.1", {\
+          "packageLocation": "./.yarn/cache/estree-walker-npm-0.6.1-fe92d0e1f6-9d6f82a492.zip/node_modules/estree-walker/",\
+          "packageDependencies": [\
+            ["estree-walker", "npm:0.6.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/estree-walker-npm-1.0.1-e916593b23-7e70da5396.zip/node_modules/estree-walker/",\
           "packageDependencies": [\
@@ -12427,6 +12435,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["rollup-plugin-inject", [\
+        ["npm:3.0.2", {\
+          "packageLocation": "./.yarn/cache/rollup-plugin-inject-npm-3.0.2-db1d368b18-a014972c80.zip/node_modules/rollup-plugin-inject/",\
+          "packageDependencies": [\
+            ["rollup-plugin-inject", "npm:3.0.2"],\
+            ["estree-walker", "npm:0.6.1"],\
+            ["magic-string", "npm:0.25.9"],\
+            ["rollup-pluginutils", "npm:2.8.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["rollup-plugin-node-polyfills", [\
+        ["npm:0.2.1", {\
+          "packageLocation": "./.yarn/cache/rollup-plugin-node-polyfills-npm-0.2.1-d0e4f85f30-e84645212c.zip/node_modules/rollup-plugin-node-polyfills/",\
+          "packageDependencies": [\
+            ["rollup-plugin-node-polyfills", "npm:0.2.1"],\
+            ["rollup-plugin-inject", "npm:3.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["rollup-plugin-terser", [\
         ["npm:7.0.2", {\
           "packageLocation": "./.yarn/cache/rollup-plugin-terser-npm-7.0.2-3f55469f5a-af84bb7a7a.zip/node_modules/rollup-plugin-terser/",\
@@ -12449,6 +12479,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/rollup",\
             "rollup"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["rollup-pluginutils", [\
+        ["npm:2.8.2", {\
+          "packageLocation": "./.yarn/cache/rollup-pluginutils-npm-2.8.2-f554dd6ac5-339fdf866d.zip/node_modules/rollup-pluginutils/",\
+          "packageDependencies": [\
+            ["rollup-pluginutils", "npm:2.8.2"],\
+            ["estree-walker", "npm:0.6.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13516,6 +13556,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"],\
             ["react-router-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:6.11.2"],\
+            ["rollup-plugin-node-polyfills", "npm:0.2.1"],\
             ["socket.io-client", "npm:4.6.1"],\
             ["stylelint", "npm:15.10.1"],\
             ["stylelint-config-standard", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:34.0.0"],\

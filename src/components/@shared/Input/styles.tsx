@@ -19,17 +19,17 @@ export const Input = styled.input<InputProps>`
   padding: 20px;
   font-size: ${({ fontSize }) => (fontSize ?? '16') + 'px'};
   font-weight: ${({ fontWeight }) => fontWeight ?? 500};
-  color: ${({ fontColor }) => fontColor ?? colors.black_100};
+  color: ${({ fontColor }) => fontColor ?? colors.black};
   letter-spacing: -0.8px;
-  background: ${({ backGroundColor }) => backGroundColor ?? colors.navy_0};
+  background: ${({ backGroundColor }) => backGroundColor ?? colors.white};
   border: ${({ borderColor }) => `1px solid ${borderColor ?? colors.line}`};
   border-radius: 10px;
   outline: none;
   caret-color: ${({ fontColor }) => fontColor ?? '#777'};
 
   :focus {
-    color: ${colors.black_100};
-    border: 1px solid ${colors.navy_900};
+    color: ${colors.black};
+    border: 1px solid ${colors.blue_900};
   }
 
   ::placeholder {
@@ -40,7 +40,7 @@ export const Input = styled.input<InputProps>`
     font-weight: 500;
     color: #babcc2;
     background-color: #f5f6f8;
-    border: 1px solid ${colors.navy_50};
+    border: 1px solid ${colors.blue_500};
   }
 
   ${({ isError }) =>

@@ -73,6 +73,7 @@
     "postcss": "^8.4.25",
     "postcss-styled-syntax": "^0.4.0",
     "prettier": "^2.8.8",
+    "rollup-plugin-node-polyfills": "^0.2.1",
     "stylelint": "^15.10.1",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-order": "^6.0.3",

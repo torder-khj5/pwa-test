@@ -15,7 +15,8 @@ export const Radio = styled.input<RadioProps>`
   margin: 0;
   vertical-align: middle;
   cursor: pointer;
-  background-color: ${colors.white_100};
+  background-color: ${colors.white};
+  background-image: url('/src/assets/icons/check_red.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-clip: content-box;
@@ -24,22 +25,22 @@ export const Radio = styled.input<RadioProps>`
   appearance: none;
 
   :checked {
-    background-color: ${colors.navy_900};
-    background-image: url('src/assets/react.svg');
-    border: 1px solid ${colors.navy_900};
+    background-color: ${colors.key_400};
+    background-image: url('/src/assets/icons/check_red.svg');
+    border: none;
   }
 
   :not(:checked, :disabled):hover {
     background-color: #fff;
-    background-image: url('src/assets/react.svg');
-    border: 1px solid ${colors.navy_900};
+    background-image: url('/src/assets/icons/check_red.svg');
+    border: 1px solid ${colors.key_400};
   }
 
   :disabled {
     cursor: unset;
     background-color: #f5f6f8;
-    background-image: url('src/assets/react.svg');
-    border: 1px solid ${colors.navy_50};
+    background-image: url('/src/assets/icons/check_red.svg');
+    border: 1px solid ${colors.blue_500};
   }
 
   & + label {
@@ -47,14 +48,14 @@ export const Radio = styled.input<RadioProps>`
   }
 
   &:hover + label {
-    color: ${colors.black_100};
+    color: ${colors.black};
   }
 
   &:disabled + label {
-    color: ${colors.navy_100};
+    color: ${colors.blue_100};
   }
 
   &:checked + label {
-    color: ${colors.black_100};
+    color: ${colors.black};
   }
 `;

@@ -1,16 +1,35 @@
-import { ModalContext, type ModalOptions, useModal } from '@components/@shared/Modal/useModal.ts';
-import { ModalTrigger } from '@components/@shared/Modal/Trigger.tsx';
-import { ModalContent } from '@components/@shared/Modal/Content.tsx';
-import { type ReactNode } from 'react';
+import * as S from './styles';
+import ReactDOM from 'react-dom';
+import { type ReactNode, useEffect, useRef } from 'react';
 
 interface ModalProps {
+  isOpen: boolean;
+  onClose?: () => void;
   children: ReactNode;
 }
 
-export function Modal({ children, ...options }: ModalProps & ModalOptions) {
-  const modal = useModal(options);
-  return <ModalContext.Provider value={modal}>{children}</ModalContext.Provider>;
-}
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+  const modalRoot = document.getElementById('modal-root');
+  const el = useRef(document.createElement('div'));
 
-Modal.Trigger = ModalTrigger;
-Modal.Content = ModalContent;
+  useEffect(() => {
+    if (!modalRoot) return;
+    modalRoot.appendChild(el.current);
+
+    return () => {
+      modalRoot.removeChild(el.current);
+    };
+  }, [modalRoot]);
+
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget && onClose) {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return ReactDOM.createPortal(<S.Overlay onClick={handleOverlayClick}>{children}</S.Overlay>, el.current);
+};
+
+export default Modal;

@@ -6,30 +6,30 @@ import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 const pwaOptions: Partial<VitePWAOptions> = {
   includeAssets: ['**/*.{js,css,html,ico,png,svg}'],
   manifest: {
-    name: 'Hubtorder',
-    short_name: 'Hubt',
+    name: 'table-orderhae',
+    short_name: 'orderhae',
     theme_color: '#FF4545',
     icons: [
       {
         src: 'icons/logo-512x512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'any',
       },
       {
         src: 'icons/favicon-128.png',
         sizes: '128x128',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'maskable',
       },
       {
         src: 'icons/apple-touch-icon-152x152.png',
         sizes: '152x152',
         type: 'image/png',
-        purpose: 'any maskable',
       },
     ],
   },
+  manifestFilename: 'manifest.json',
   devOptions: {
     enabled: true,
     type: 'module',
@@ -42,14 +42,29 @@ const pwaOptions: Partial<VitePWAOptions> = {
     swDest: 'dist/sw.js',
   },
   strategies: 'injectManifest',
-  filename: 'src-sw.js',
 };
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      timers: 'rollup-plugin-node-polyfills/polyfills/timers',
+    },
+  },
   assetsInclude: ['@assets/**'],
   build: {
     assetsDir: 'src/assets',
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        sw: './sw.js',
+      },
+      external: ['http', 'msw'],
+      output: {
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+      },
+    },
   },
   plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), VitePWA(pwaOptions)],
 });

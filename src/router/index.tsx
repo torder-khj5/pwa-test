@@ -1,69 +1,31 @@
 /* eslint-disable react-refresh/only-export-components */
-import IndexPage from '@pages/IndexPage/Index';
-import Layout from '@components/Layout';
+import HomePage from '@pages/HomePage';
+import ErrorPage from '@pages/ErrorPage';
+
+import Layout from '@layout';
 import initMocks from '../__mocks__';
-import AuthCheck from './AuthCheck';
 import { createBrowserRouter } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 
-const SelectSignupTypePage = lazy(async () => await import('@pages/SelectSignupTypePage'));
-const LoginPage = lazy(async () => await import('@pages/LoginPage'));
-const CertificationPage = lazy(async () => await import('@pages/CertificationPage'));
-const NoticePage = lazy(async () => await import('@pages/NoticePage'));
-const FAQPage = lazy(async () => await import('@pages/FAQPage'));
-const TestPage = lazy(async () => await import('@pages/TestPage'));
-const ItemsPage = lazy(async () => await import('@pages/ItemsPage'));
-
-// if (import.meta.env.MODE === 'development') {
-//   await initMocks();
-// }
+if (import.meta.env.MODE === 'development') {
+  await initMocks();
+}
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
       <Suspense fallback={<div>loading...</div>}>
-        <AuthCheck>
-          <Layout />
-        </AuthCheck>
+        <Layout />
       </Suspense>
     ),
-    errorElement: <div>ErrorPage</div>,
-
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <IndexPage />,
-      },
-      {
-        path: 'signup',
-        element: <SelectSignupTypePage />,
-      },
-      {
-        path: 'notice',
-        element: <NoticePage />,
-      },
-      {
-        path: 'cert',
-        element: <CertificationPage />,
-      },
-      {
-        path: 'faq',
-        element: <FAQPage />,
-      },
-      {
-        path: 'items',
-        element: <ItemsPage />,
+        element: <HomePage />,
       },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/test',
-    element: <TestPage />,
   },
 ]);
 

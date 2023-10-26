@@ -1,11 +1,11 @@
 {
-  "name": "Hubtorder",
-  "short_name": "Hubt",
-  "start_url": "/login",
+  "name": "torder-orderhae",
+  "short_name": "orderhae",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#FFF",
   "theme_color": "#FF4545",
-  "description": "PWA with Vite.js, React.js and TypeScript",
+  "description": "PWA FOR OrderHae",
   "icons": [
     {
       "src": "favicon.ico",

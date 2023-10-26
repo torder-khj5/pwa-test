@@ -20,7 +20,7 @@ export default function Switch({ checked, onChange: onChangeProp, defaultValue }
   }, [setOn, on]);
 
   const buttonPosition = useMemo(() => (on ? 'flex-end' : 'flex-start'), [on]);
-  const backgroundColor = useMemo(() => (on ? colors.navy_900 : '#e1e1e1'), [on]);
+  const backgroundColor = useMemo(() => (on ? colors.blue_900 : '#e1e1e1'), [on]);
 
   return (
     <S.SwitchWrap justifyContent={buttonPosition} backgroundColor={backgroundColor} onClick={handleOnClick}>

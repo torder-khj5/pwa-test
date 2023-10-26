@@ -17,7 +17,7 @@ export const CommonButton = styled.button<CommonButtonProps>`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: ${({ priority }) => (priority === 'primary' ? colors.red_500 : colors.navy_900)};
+  color: ${({ priority }) => (priority === 'primary' ? colors.red_500 : colors.blue_900)};
   text-align: center;
   letter-spacing: -1px;
   border-radius: 10px;
@@ -32,40 +32,49 @@ const mapToBtnType = (btnType: BtnType, priority?: Priority) => {
   switch (btnType) {
     case 'default':
       return css({
-        backgroundColor: isPrimary ? colors.red_500 : colors.navy_900,
-        color: colors.white_100,
+        backgroundColor: isPrimary ? colors.key_400 : colors.black_900,
+        color: colors.white,
 
         ':active': {
-          background: isPrimary ? colors.red_500 : colors.black_100,
+          background: isPrimary ? colors.key_600 : colors.black_600,
         },
 
         ':disabled': {
-          background: isPrimary ? colors.red_100 : colors.navy_30,
-          color: isPrimary ? colors.white_100 : colors.black_10,
+          background: isPrimary ? colors.key_50 : colors.black_100,
+          cursor: 'not-allowed',
         },
       });
     case 'line':
       return css({
-        border: `1px solid ${isPrimary ? colors.red_500 : colors.navy_30}`,
-        background: colors.white_100,
+        border: `1px solid ${isPrimary ? colors.key_400 : colors.black_900}`,
+        background: colors.white,
+        color: isPrimary ? colors.key_400 : colors.black_900,
 
         ':active': {
-          border: `1px solid ${isPrimary ? colors.red_500 : colors.navy_900}`,
-          background: isPrimary ? colors.red_50 : colors.navy_30,
+          border: `1px solid ${isPrimary ? colors.key_400 : colors.black_900}`,
+          background: isPrimary ? colors.key_50 : colors.black_50,
+          color: isPrimary ? colors.key_400 : colors.black_900,
         },
 
         ':disabled': {
-          border: `1px solid ${isPrimary ? colors.red_100 : colors.navy_50}`,
-          background: isPrimary ? colors.red_50 : '#F5F6F8',
-          color: isPrimary ? colors.red_200 : '#C2C5CC',
+          border: `1px solid ${isPrimary ? colors.key_50 : colors.black_200}`,
+          background: isPrimary ? colors.red_50 : colors.black_50,
+          color: isPrimary ? colors.key_100 : colors.key_200,
+          cursor: 'not-allowed',
         },
       });
     case 'bg':
       return css({
-        background: isPrimary ? colors.red_50 : colors.navy_30,
+        background: isPrimary ? colors.key_10 : colors.black_50,
 
         ':active': {
-          background: isPrimary ? colors.red_100 : colors.navy_50,
+          background: isPrimary ? colors.key_50 : colors.black_100,
+        },
+
+        ':disabled': {
+          background: isPrimary ? colors.key_10 : colors.black_50,
+          color: isPrimary ? colors.white : colors.black_200,
+          cursor: 'not-allowed',
         },
       });
   }

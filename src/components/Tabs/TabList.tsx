@@ -11,7 +11,13 @@ export default function TabList({ tabs, activeTab, onTabChange }: TabListProps) 
   return (
     <S.TabHeader role={'tablist'}>
       {tabs.map(({ id, label }) => (
-        <S.TabButton key={'tab-Btn-' + id} onClick={() => onTabChange(id)} role={'tab'} active={activeTab === id}>
+        <S.TabButton
+          key={'tab-Btn-' + id}
+          onClick={() => onTabChange(id)}
+          role={'tab'}
+          active={activeTab === id}
+          isFirst={activeTab === '0'}
+        >
           {label}
         </S.TabButton>
       ))}

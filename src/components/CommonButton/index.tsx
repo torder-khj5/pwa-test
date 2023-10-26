@@ -1,7 +1,7 @@
 import * as S from '././styles.tsx';
 
 export type Priority = 'primary' | 'secondary';
-export type BtnSize = 'xs' | 'sm' | 'md' | 'lg';
+export type BtnSize = 'xs' | 'sm' | 'md' | 'lg' | 'full';
 export type BtnType = 'default' | 'line' | 'bg';
 
 interface CommonButtonProps {

@@ -1,3 +1,4 @@
+import type RoutePath from '@type/RoutePath';
 import { type NavigateOptions, useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 
@@ -14,10 +15,3 @@ export function useInternalRouter() {
     };
   }, [navigate]);
 }
-
-type RoutePath = '/' | '/example' | '/login';
-// | '/parents'
-// | `/parents/${string}`
-// | '/posts'
-// | `/posts/${number}`
-// | '/todo';

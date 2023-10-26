@@ -1,11 +1,15 @@
+import GlobalStyles from '@styles/globals';
 import router from './router';
+import Provider from './Provider';
 import { RouterProvider } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <div id="modal-root"></div>
-      <RouterProvider router={router} />
+      <GlobalStyles />
+      <Provider>
+        <RouterProvider router={router} />
+      </Provider>
     </>
   );
 }
