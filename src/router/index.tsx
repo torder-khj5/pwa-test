@@ -3,13 +3,13 @@ import HomePage from '@pages/HomePage';
 import ErrorPage from '@pages/ErrorPage';
 
 import Layout from '@layout';
-import initMocks from '../__mocks__';
 import { createBrowserRouter } from 'react-router-dom';
 import { Suspense } from 'react';
 
-if (import.meta.env.MODE === 'development') {
-  await initMocks();
-}
+// if (import.meta.env.MODE === 'development') {
+//   await initMocks();
+// }
+console.log('ENV MODE: ', import.meta.env.MODE);
 
 const router = createBrowserRouter([
   {
