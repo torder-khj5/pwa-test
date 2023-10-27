@@ -56,10 +56,6 @@ export default defineConfig({
   build: {
     assetsDir: 'src/assets',
     rollupOptions: {
-      input: {
-        main: './index.html',
-        sw: './sw.js',
-      },
       external: ['http', 'msw'],
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js',
