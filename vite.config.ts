@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc';
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 
 const pwaOptions: Partial<VitePWAOptions> = {
-  includeAssets: ['**/*.{js,css,html,ico,png,svg}'],
+  includeAssets: ['**/*.{js,css,html,ico,png,svg}', 'favicon.ico', 'manifest'],
   manifest: {
     name: 'table-orderhae',
     short_name: 'orderhae',
@@ -42,7 +42,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
     swDest: 'dist/sw.js',
   },
   strategies: 'injectManifest',
-  filename: 'sw.js',
+  filename: 'sw.js', //src-sw.js
 };
 
 // https://vitejs.dev/config/
