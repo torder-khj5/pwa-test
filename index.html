@@ -14,22 +14,5 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/main.tsx"></script>
-<script>
-  // if ("serviceWorker" in navigator) {
-  //   console.log("sw load");
-  //   navigator.serviceWorker.register("/sw.js", { type: "module" });
-  // }
-
-  // Service Worker 등록
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .then(() => {
-        console.log('Service Worker registered!');
-      })
-      .catch((error) => {
-        console.error('Service Worker registration failed:', error);
-      });
-  }
-</script>
 </body>
 </html>
