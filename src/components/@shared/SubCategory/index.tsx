@@ -4,6 +4,7 @@ import * as S from './styles.tsx';
 
 export default function SubCategory() {
   const { currentSubCategory } = useCategorySelector(['currentSubCategory']);
+  console.log('currentSubCategory: ', currentSubCategory);
 
   return (
     <S.SubCategoryContainer>
