@@ -1,5 +1,6 @@
 import { type CategoryType } from '@type/categoryType.ts';
 import { useCategoryAction } from '@store/useCategoryStore.ts';
+import { SAMPLE_CATEGORY } from '@constants/category.ts';
 import CategoryItem from '@components/@shared/Category/CategoryItem';
 import { requestCategories } from '@api/categories.ts';
 import * as S from './styles.tsx';
@@ -13,7 +14,7 @@ export default function Category() {
     retry: 0,
     staleTime: 60 * 5000,
     initialData: () => {
-      return queryClient.getQueryData(['categories']);
+      return SAMPLE_CATEGORY;
     },
   });
   const { setCategory, setCurrentCategory } = useCategoryAction();

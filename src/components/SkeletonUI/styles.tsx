@@ -1,7 +1,7 @@
 import { colors } from '@styles/colors';
 import { type SkeletonFormProps } from '.';
 import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 
 const reactLoadingSkeletonAnimation = keyframes`
   100% {

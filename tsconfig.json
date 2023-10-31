@@ -9,6 +9,7 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true, //pouch db
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

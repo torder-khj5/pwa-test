@@ -47,6 +47,9 @@ const pwaOptions: Partial<VitePWAOptions> = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    global: 'window',
+  },
   resolve: {
     alias: {
       timers: 'rollup-plugin-node-polyfills/polyfills/timers',

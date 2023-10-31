@@ -1,21 +1,10 @@
 import { useListBoxContext } from './useListBox';
-import React, { useId } from 'react';
-import { type PropsWithChildren, forwardRef, type ReactElement, cloneElement } from 'react';
+import React, { forwardRef, type PropsWithChildren } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 
 type Props = {
   placeholder?: string;
   asChild?: boolean;
-};
-
-// interface Props extends React.HTMLProps<HTMLElement> {
-//   asChild?: boolean;
-//   placeholder?: string;
-//   children?: any;
-// }
-
-type ButtonSlotState = {
-  open: boolean;
 };
 
 const Button = forwardRef<HTMLElement, PropsWithChildren<Props>>(function Button(
