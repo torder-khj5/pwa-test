@@ -14,7 +14,7 @@ export default function HomePage() {
     try {
       // const db = new PouchDB('http://192.168.20.227:5984/dbname');
       const db = new PouchDB('test'); // 로컬 PouchDB 데이터베이스 생성
-      const remoteDB = new PouchDB('http://admin:0000@192.168.20.227:15984/test');
+      const remoteDB = new PouchDB('http://admin:0000@192.168.0.16:5984/test');
 
       db.sync(remoteDB, {
         live: true,
