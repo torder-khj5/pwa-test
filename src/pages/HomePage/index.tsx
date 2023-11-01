@@ -28,7 +28,7 @@ export default function HomePage() {
       // 데이터 추가 (Create)
       const doc = {
         _id: new Date().toISOString(),
-        title: '김덱스',
+        title: 'local test',
         content: 'This is some content.',
       };
 
