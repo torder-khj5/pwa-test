@@ -41,15 +41,6 @@ export default function HomePage() {
         .catch((error: any) => {
           console.error('Error:', error);
         });
-
-      // 데이터 읽기
-      db.get('3301016708e00e2cac6cb603d5000860')
-        .then(function (doc) {
-          console.log('CouchDB에서 가져온 문서:', doc);
-        })
-        .catch(function (err) {
-          console.log('문서를 가져오지 못했습니다.', err);
-        });
     } catch (e) {
       console.log('error: ', e);
     }
