@@ -23,7 +23,7 @@ export default function HomePage() {
       //     opts.
       //   },
       // });
-      const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:6984/tests');
+      const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:6984/test');
 
       // DB 연결 및 동기화
       db.sync(remoteDB, {
