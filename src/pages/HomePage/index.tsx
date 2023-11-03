@@ -1,7 +1,7 @@
-import * as http from 'http';
+import * as https from 'https';
 import { colors } from '@styles/colors.ts';
 import * as S from './styles.tsx';
-import { logger } from 'workbox-core/_private';
+// import PouchDB from 'pouchdb';
 import PouchDB from 'pouchdb';
 
 type Img = {
@@ -12,18 +12,23 @@ type Img = {
 export default function HomePage() {
   // const { goods } = useInitSelector(['goods']);
 
+  const proxyServerURL = 'http://localhost:3001';
+
   async function addData() {
     try {
       const db = new PouchDB('test'); // 로컬 PouchDB 데이터베이스 생성
-      // const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:5984/test');
-      // const remoteDB = new PouchDB('https://your-couchdb-server.com/your-database', {
-      //   fetch: function (url, opts) {
-      //     // opts.rejectUnauthorized = false; // 자체 서명된 인증서 허용
-      //     // return request(url, opts);
-      //     opts.
-      //   },
+      // const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:6984/test');
+      // const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:6984/test');
+      const remoteDB = new PouchDB(proxyServerURL);
+
+      // const instance = axios.create({
+      //   baseURL: 'https://admin:0000@192.168.0.14:6984/test',
+      //   httpsAgent: new https.Agent({
+      //     rejectUnauthorized: false,
+      //   }),
       // });
-      const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:6984/test');
+      //
+      // const response = await instance.post('/api', { abc: 123 });
 
       // DB 연결 및 동기화
       db.sync(remoteDB, {
