@@ -8,7 +8,7 @@ interface CategoryAction {
   setCurrentCategory: (categoryCode: string) => void;
   setCurrentSubCategory: () => void;
   getSubCategory: () => ChildCategoryType[];
-  getProducts: (subCategoryCode: string) => ProductType[] | [];
+  getProducts: () => ProductType[] | [];
 }
 
 const categoryStore = () => ({
@@ -52,16 +52,22 @@ export const useCategoryAction = (): CategoryAction => ({
   setCurrentSubCategory: () => {
     const currentSubCategory = useCategoryStore.getState().currentCategory.subCategory;
     useCategoryStore.setState({ currentSubCategory });
-    return '';
+    const currentCategoryCode = useCategoryStore.getState().currentCategory.code;
+    const productsList = useCategoryStore
+      .getState()
+      .currentSubCategory.find(({ categoryCode }: ChildCategoryType) => categoryCode === currentCategoryCode);
   },
   getSubCategory: () => {
     const category = useCategoryStore.getState().currentCategory;
     return category.subCategory;
   },
-  getProducts: (subCategoryCode) => {
+  getProducts: () => {
+    console.log('call products ');
+    const currentCategory = useCategoryStore.getState().currentCategory.code;
+    console.log('current: ', currentCategory);
     const subCategory = useCategoryStore
       .getState()
-      .currentSubCategory.find(({ categoryCode }: ChildCategoryType) => categoryCode === subCategoryCode);
+      .currentSubCategory.find(({ categoryCode }: ChildCategoryType) => categoryCode === currentCategory);
     return subCategory?.productList ?? [];
   },
 });

@@ -1,7 +1,6 @@
-import * as http from 'http';
 import { colors } from '@styles/colors.ts';
+import { useCategoryAction, useCategorySelector } from '@store/useCategoryStore.ts';
 import * as S from './styles.tsx';
-import { logger } from 'workbox-core/_private';
 import PouchDB from 'pouchdb';
 
 type Img = {
@@ -10,20 +9,13 @@ type Img = {
 };
 
 export default function HomePage() {
-  // const { goods } = useInitSelector(['goods']);
+  // const { getProducts } = useCategoryAction();
+  const { products } = useCategorySelector(['products']);
 
   async function addData() {
     try {
       const db = new PouchDB('test'); // 로컬 PouchDB 데이터베이스 생성
-      // const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:5984/test');
-      // const remoteDB = new PouchDB('https://your-couchdb-server.com/your-database', {
-      //   fetch: function (url, opts) {
-      //     // opts.rejectUnauthorized = false; // 자체 서명된 인증서 허용
-      //     // return request(url, opts);
-      //     opts.
-      //   },
-      // });
-      const remoteDB = new PouchDB('https://admin:0000@192.168.0.14:6984/test');
+      const remoteDB = new PouchDB('http://admin:0000@192.168.0.14:6984/test');
 
       // DB 연결 및 동기화
       db.sync(remoteDB, {
@@ -88,7 +80,7 @@ export default function HomePage() {
 
   return (
     <S.HomeContainer>
-      {/* {goods.map(({ src, name }: Img) => { */}
+      {/* {products?.map(({ src, name }: Img) => { */}
       {/*  return <ImageCard src={src} key={'key' + name} />; */}
       {/* })} */}
       <button
