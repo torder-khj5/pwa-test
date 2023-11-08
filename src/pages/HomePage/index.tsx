@@ -17,7 +17,7 @@ export default function HomePage() {
   async function addData() {
     try {
       const db = new PouchDB('test'); // 로컬 PouchDB 데이터베이스 생성
-      const remoteDB = new PouchDB('http://admin:0000@192.168.101.1:6984/test');
+      const remoteDB = new PouchDB('http://admin:0000@192.168.101.3:6984/test');
 
       // DB 연결 및 동기화
       db.sync(remoteDB, {
@@ -74,7 +74,7 @@ export default function HomePage() {
   async function getInitData() {
     const db = new PouchDB('store'); // 로컬 PouchDB 데이터베이스 생성
     // remote DB에서 데이터 가져오도록
-    const remoteDB = new PouchDB('http://admin:0000@192.168.101.1:6984/store');
+    const remoteDB = new PouchDB('http://admin:0000@192.168.101.3:6984/store');
 
     // DB 연결 및 동기화
     db.sync(remoteDB, {
