@@ -1,6 +1,6 @@
 import { type CategoryType } from '@type/categoryType.ts';
 
-export const SAMPLE_CATEGORY: { data: CategoryType[] } = {
+export const PRODUCT_LIST: { data: CategoryType[] } = {
   data: [
     {
       id: 'appetizer',
