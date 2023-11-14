@@ -11,8 +11,9 @@ type Img = {
 };
 
 export default function HomePage() {
-  // const { getProducts } = useCategoryAction();
+  const { getProducts } = useCategoryAction();
   const { products } = useCategorySelector(['products']);
+  console.log('products: ', getProducts());
 
   async function addData() {
     try {
@@ -74,7 +75,7 @@ export default function HomePage() {
   async function getInitData() {
     const db = new PouchDB('store'); // 로컬 PouchDB 데이터베이스 생성
     // remote DB에서 데이터 가져오도록
-    const remoteDB = new PouchDB('http://admin:0000@192.168.101.3:6984/store');
+    const remoteDB = new PouchDB('http://admin:0000@192.168.101.6:6984/store');
 
     // DB 연결 및 동기화
     db.sync(remoteDB, {
