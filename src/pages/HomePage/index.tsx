@@ -20,12 +20,14 @@ export default function HomePage() {
       const db = new PouchDB('test'); // 로컬 PouchDB 데이터베이스 생성
       const remoteDB = new PouchDB('http://admin:0000@192.168.101.6:6984/test');
 
+      alert('Hi pouchdb!');
       // DB 연결 및 동기화
       db.sync(remoteDB, {
         live: true,
         retry: true,
       });
 
+      alert('Connect pouchdb!');
       db.changes().on('change', (change) => {
         console.log('로컬 데이터베이스 변경 감지:', change);
       });
