@@ -125,7 +125,6 @@ export default function HomePage() {
         style={{
           width: '100px',
           height: '40px',
-          position: 'absolute',
           top: '150px',
           right: '50%',
           border: `1px solid ${colors.green_key}`,

@@ -8,7 +8,8 @@ export const requestCategories = async () => {
 };
 
 export const requestSubCategories = async (categoryCode: string) => {
-  const category = await axios.get('/categories');
+  // const category = await axios.get('/categories');
+  const category = SAMPLE_CATEGORY;
   const selectCategory = category?.data.find(({ code }: CategoryType) => code === categoryCode);
   const subCategory = selectCategory?.subCategory;
   const productList = subCategory?.find(

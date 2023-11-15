@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+import MenuList from '@pages/HomePage/MenuList.tsx';
 import HomePage from '@pages/HomePage';
 import ErrorPage from '@pages/ErrorPage';
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: '/test',
+        element: <MenuList />,
       },
     ],
   },

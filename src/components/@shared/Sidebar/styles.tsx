@@ -2,9 +2,6 @@ import { colors } from '@styles/colors.ts';
 import styled from '@emotion/styled';
 
 export const SidebarContainer = styled.aside`
-  position: fixed;
-  top: 0;
-  flex: 1;
   width: 21rem;
   max-width: 21rem;
   height: 100%;
