@@ -6,7 +6,7 @@ import { create } from 'zustand';
 interface CategoryAction {
   setCategory: (category: CategoryType[]) => void;
   setCurrentCategory: (categoryCode: string) => void;
-  setCurrentSubCategory: () => void;
+  setCurrentSubCategory: (code: string) => void;
   getSubCategory: () => ChildCategoryType[];
   getProducts: () => ProductType[] | [];
 }
@@ -27,6 +27,7 @@ const categoryStore = () => ({
     subCategory: [],
   },
   currentSubCategory: [],
+  currentSubCategoryCode: '',
   products: [],
 });
 
@@ -47,15 +48,15 @@ export const useCategoryAction = (): CategoryAction => ({
       .getState()
       .category.find(({ code }: CategoryType) => code === categoryCode);
     useCategoryStore.setState({ currentCategory });
-    useCategoryStore.setState({ currentSubCategory: currentCategory?.subCategory ?? [] });
+    // useCategoryStore.setState({ currentSubCategory: currentCategory?.subCategory ?? [] });
   },
-  setCurrentSubCategory: () => {
-    const currentSubCategory = useCategoryStore.getState().currentCategory.subCategory;
-    useCategoryStore.setState({ currentSubCategory });
-    const currentCategoryCode = useCategoryStore.getState().currentCategory.code;
+  setCurrentSubCategory: (code: string) => {
+    useCategoryStore.setState({ currentSubCategoryCode: code });
+
     const productsList = useCategoryStore
       .getState()
-      .currentSubCategory.find(({ categoryCode }: ChildCategoryType) => categoryCode === currentCategoryCode);
+      .currentCategory.subCategory.filter(({ code: subCategoryCode }: ChildCategoryType) => subCategoryCode === code);
+    useCategoryStore.setState({ products: productsList[0].productList ?? [] });
   },
   getSubCategory: () => {
     const category = useCategoryStore.getState().currentCategory;

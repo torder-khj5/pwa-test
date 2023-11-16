@@ -4,13 +4,13 @@ import React from 'react';
 interface CategoryItemProps {
   code: string;
   itemName: string;
-  active: boolean;
+  isSelect: boolean;
   onItemClick: (itemCode: string) => void;
 }
 
-export const CategoryItem = ({ code, itemName, active, onItemClick }: CategoryItemProps) => {
+export const CategoryItem = ({ code, itemName, isSelect, onItemClick }: CategoryItemProps) => {
   return (
-    <S.CategoryItemWrapper isActive={active} onClick={() => onItemClick(code)}>
+    <S.CategoryItemWrapper isSelect={isSelect} onClick={() => onItemClick(code)}>
       {code + ' ' + itemName}
     </S.CategoryItemWrapper>
   );

@@ -1,6 +1,6 @@
 import { type CategoryType, type ChildCategoryType } from '@type/categoryType.ts';
+import { PRODUCT_LIST } from '@constants/products.ts';
 import { SAMPLE_CATEGORY } from '@constants/category.ts';
-import axios from 'axios';
 
 export const requestCategories = async () => {
   // return await axios.get('/categories');
@@ -21,4 +21,8 @@ export const requestSubCategories = async (categoryCode: string) => {
     subCategory,
     productList,
   };
+};
+
+export const requestProductList = async () => {
+  return PRODUCT_LIST;
 };

@@ -15,21 +15,22 @@ export default function Category() {
     initialData: () => {
       return queryClient.getQueryData(['categories']);
     },
+    networkMode: 'offlineFirst',
   });
   const { setCategory, setCurrentCategory } = useCategoryAction();
 
-  const [activeCode, setActiveCode] = useState<string | null>(null);
+  const [selectCode, setSelectCode] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!isLoading && data && data.data.length > 0 && activeCode === null) {
+    if (!isLoading && data && data.data.length > 0 && selectCode === null) {
       setCategory(data.data);
-      setActiveCode(data.data[0].code);
+      setSelectCode(data.data[0].code);
       setCurrentCategory(data.data[0].code);
     }
-  }, [data, isLoading, activeCode, setCategory, setCurrentCategory]);
+  }, [data, isLoading, selectCode, setCategory, setCurrentCategory]);
 
   const handleItemClick = (itemCode: string) => {
-    setActiveCode(itemCode === activeCode ? null : itemCode);
+    setSelectCode(itemCode === selectCode ? null : itemCode);
     setCurrentCategory(itemCode);
   };
 
@@ -45,7 +46,7 @@ export default function Category() {
             key={id + index}
             itemName={name}
             code={code}
-            active={code === activeCode}
+            isSelect={code === selectCode}
             onItemClick={handleItemClick}
           />
         );

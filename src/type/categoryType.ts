@@ -36,5 +36,6 @@ export interface Category {
   category: CategoryType[];
   currentCategory: CategoryType;
   currentSubCategory: ChildCategoryType[];
+  currentSubCategoryCode: string;
   products: ProductType[];
 }

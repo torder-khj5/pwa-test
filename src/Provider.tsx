@@ -11,6 +11,8 @@ const queryClient = new QueryClient({
       onError(err) {
         console.log({ err });
       },
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
     },
     mutations: {
       onError(err) {

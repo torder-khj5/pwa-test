@@ -4,8 +4,10 @@ export default function ImageCard({ src }: { src: string }) {
       alt={'handler-img-card'}
       src={src}
       style={{
-        width: '50px',
-        height: '50px',
+        width: '100%',
+        objectFit: 'cover',
+        borderRadius: '0.7813vw',
+        height: '18vw',
       }}
     />
   );

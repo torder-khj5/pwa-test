@@ -1,15 +1,15 @@
 import { colors } from '@styles/colors.ts';
 import styled from '@emotion/styled';
 
-export const CategoryItemWrapper = styled.div<{ isActive: boolean }>`
+export const CategoryItemWrapper = styled.div<{ isSelect: boolean }>`
   padding: 30px;
   font-size: 16px;
-  color: ${(props) => (props.isActive ? '#fff' : '#000')};
+  color: ${(props) => (props.isSelect ? '#fff' : '#000')};
   cursor: pointer;
-  background-color: ${(props) => (props.isActive ? '#007bff' : 'transparent')};
+  background-color: ${(props) => (props.isSelect ? '#007bff' : 'transparent')};
 
   ${(props) =>
-    props.isActive &&
+    props.isSelect &&
     `
     font-size: 20px;
     background-color: ${colors.white};
