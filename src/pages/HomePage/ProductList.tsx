@@ -13,21 +13,18 @@ export default function ProductList() {
     staleTime: 60 * 5000,
   });
 
-  const { connectDB, getDocs, addOrderData, allData } = usePouchDB();
+  const { addOrderData, allData } = usePouchDB();
 
   useEffect(() => {
-    connectDB();
-
     if (!isLoading && data && data.data) {
       setProducts(data.data);
     }
-  }, [connectDB, data, isLoading]);
+  }, [data, isLoading]);
 
   const handleClick = () => {
     console.log('주문입력');
-    addOrderData().then((r) => console.log('add order data'));
-    getDocs().then((r) => console.log(allData));
-    // getDocs().then((r) => console.log('handleClick done'));
+    addOrderData().then((r) => console.log('add order data')); // 데이터만 쏴주면 댐 -> 훅 안에서 알아서 데이터 갱신 시킴
+    // getDocs().then((r) => console.log(allData)); // 필요없음
     console.log('주문입력 done');
   };
 
