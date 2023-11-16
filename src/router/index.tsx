@@ -17,13 +17,13 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
-      // {
-      //   index: true,
-      //   element: <HomePage />,
-      // },
       {
-        // path: '/test',
         index: true,
+        // element: <HomePage />,
+        element: <ProductList />,
+      },
+      {
+        path: '/test',
         element: <ProductList />,
       },
     ],
