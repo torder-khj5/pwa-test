@@ -1,4 +1,6 @@
+import FloatingOrderList from 'src/pages/HomePage/FloatingOrderList';
 import { type ProductType } from '@type/categoryType.ts';
+import { useOrderAction, useOrderSelector } from '@store/useOrderStore.ts';
 import ImageCard from '@pages/HomePage/ImageCard';
 import usePouchDB from '@hooks/usePouchDB.ts';
 import { requestProductList } from '@api/categories.ts';
@@ -13,7 +15,7 @@ export default function ProductList() {
     staleTime: 60 * 5000,
   });
 
-  const { addOrderData, allData } = usePouchDB();
+  const { addOrderData } = usePouchDB();
 
   useEffect(() => {
     if (!isLoading && data && data.data) {
@@ -21,26 +23,30 @@ export default function ProductList() {
     }
   }, [data, isLoading]);
 
-  const handleClick = () => {
+  const handleClick = (product: ProductType) => {
     console.log('주문입력');
-    addOrderData().then((r) => console.log('add order data')); // 데이터만 쏴주면 댐 -> 훅 안에서 알아서 데이터 갱신 시킴
-    // getDocs().then((r) => console.log(allData)); // 필요없음
+    console.log('product: ', product);
+    addOrderData(product).then((r) => console.log('add order data')); // 데이터만 쏴주면 댐 -> 훅 안에서 알아서 데이터 갱신 시킴
     console.log('주문입력 done');
   };
 
   return (
-    <S.ProductContainer>
-      {products?.map(({ image, name, price }: ProductType, index) => {
-        return (
-          <S.ProductItemContainer key={`product_${name}_${index}`} onClick={handleClick}>
-            <ImageCard src={image} />
-            <S.ProductItemInfo>
-              <div>{name}</div>
-              <div>{price}</div>
-            </S.ProductItemInfo>
-          </S.ProductItemContainer>
-        );
-      })}
-    </S.ProductContainer>
+    <>
+      <FloatingOrderList />
+      <S.ProductContainer>
+        {products?.map((product: ProductType, index) => {
+          const { image, name, price } = product;
+          return (
+            <S.ProductItemContainer key={`product_${name}_${index}`} onClick={() => handleClick(product)}>
+              <ImageCard src={image} />
+              <S.ProductItemInfo>
+                <div>{name}</div>
+                <div>{price}</div>
+              </S.ProductItemInfo>
+            </S.ProductItemContainer>
+          );
+        })}
+      </S.ProductContainer>
+    </>
   );
 }

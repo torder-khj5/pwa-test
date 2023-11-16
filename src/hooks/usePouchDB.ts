@@ -1,5 +1,6 @@
-import { PRODUCT_LIST } from '@constants/products.ts';
-import { useEffect, useState } from 'react';
+import { type ProductType } from '@type/categoryType.ts';
+import { useOrderAction } from '@store/useOrderStore.ts';
+import { useEffect } from 'react';
 
 import PouchDB from 'pouchdb';
 
@@ -19,7 +20,7 @@ export const remoteDB = new PouchDB('https://192.168.101.6:6984/test', {
 });
 
 export default function usePouchDB() {
-  const [allData, setAllData] = useState<any>(null);
+  const { setOrderIdList } = useOrderAction();
 
   useEffect(() => {
     connectDB();
@@ -43,23 +44,24 @@ export default function usePouchDB() {
       })
       .on('change', (change) => {
         console.log('원격 데이터베이스 변경 감지:', change);
-        getDocs(); // 리모트 디비가 온체인지 될떄마다 데이터 리프레시 해줘야함
+        getAllDocs(); // 리모트 디비가 온체인지 될떄마다 데이터 리프레시 해줘야함
       });
   };
 
-  const getDocs = async () => {
+  const getAllDocs = async () => {
     try {
       const res = await remoteDB.allDocs();
-      setAllData(res);
-      // return await localDB.allDocs();
+      setOrderIdList(res);
       return res;
     } catch (err) {
       console.error(err);
     }
   };
 
-  const addOrderData = async () => {
-    const doc = PRODUCT_LIST.data[0];
+  const getDoc = async (docId: string) => await localDB.get(docId);
+
+  const addOrderData = async (product: ProductType) => {
+    const doc = product;
     console.log('doc: ', doc);
     try {
       // post는 _id를 자동으로 생성
@@ -70,5 +72,5 @@ export default function usePouchDB() {
     }
   };
 
-  return { getDocs, addOrderData, allData };
+  return { getAllDocs, getDoc, addOrderData };
 }
