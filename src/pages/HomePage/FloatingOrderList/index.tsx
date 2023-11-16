@@ -4,12 +4,6 @@ import usePouchDB from '@hooks/usePouchDB.ts';
 import * as S from './styles.tsx';
 import { useEffect } from 'react';
 
-type orderList = {
-  offset: number;
-  rows: any;
-  total_rows: number;
-};
-
 export type rowsValue = {
   id: string;
   key: string;

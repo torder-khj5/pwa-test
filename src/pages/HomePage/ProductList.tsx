@@ -1,6 +1,5 @@
 import FloatingOrderList from 'src/pages/HomePage/FloatingOrderList';
 import { type ProductType } from '@type/categoryType.ts';
-import { useOrderAction, useOrderSelector } from '@store/useOrderStore.ts';
 import ImageCard from '@pages/HomePage/ImageCard';
 import usePouchDB from '@hooks/usePouchDB.ts';
 import { requestProductList } from '@api/categories.ts';

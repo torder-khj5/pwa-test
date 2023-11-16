@@ -2,7 +2,7 @@ import { type ChildCategoryType } from '@type/categoryType.ts';
 import { useCategoryAction, useCategorySelector } from '@store/useCategoryStore.ts';
 import { requestSubCategories } from '@api/categories.ts';
 import * as S from './styles.tsx';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export default function SubCategory() {
@@ -29,8 +29,6 @@ export default function SubCategory() {
     if (!isLoading && data) {
       // setCurrentSubCategory();
     }
-
-    console.log('data: ', data);
   }, [data, isLoading, setCategory, setCurrentCategory]);
 
   if (isLoading) {
