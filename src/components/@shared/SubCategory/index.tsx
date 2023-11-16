@@ -7,10 +7,10 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export default function SubCategory() {
   const { currentSubCategory, currentCategory } = useCategorySelector(['currentSubCategory', 'currentCategory']);
-  const [selectCode, setSelectCode] = useState<string | null>(null);
-  const { setCurrentSubCategory } = useCategoryAction();
-
+  // const [selectCode, setSelectCode] = useState<string | null>(null);
+  // const { setCurrentSubCategory } = useCategoryAction();
   const queryClient = useQueryClient();
+  const { setCategory, setCurrentCategory } = useCategoryAction();
 
   const { data, isLoading } = useQuery(
     ['subCategories', currentCategory.code],
@@ -24,7 +24,6 @@ export default function SubCategory() {
       networkMode: 'offlineFirst',
     }
   );
-  const { setCategory, setCurrentCategory } = useCategoryAction();
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -34,9 +33,13 @@ export default function SubCategory() {
     console.log('data: ', data);
   }, [data, isLoading, setCategory, setCurrentCategory]);
 
+  if (isLoading) {
+    return <div></div>;
+  }
+
   return (
     <S.SubCategoryContainer>
-      {currentSubCategory.map(({ name, id }: ChildCategoryType) => {
+      {currentSubCategory?.map(({ name, id }: ChildCategoryType) => {
         return <S.SubCategoryItem key={id}>{name}</S.SubCategoryItem>;
       })}
     </S.SubCategoryContainer>
