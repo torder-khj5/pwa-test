@@ -12,7 +12,7 @@ export type rowsValue = {
   };
 };
 export default function FloatingOrderList() {
-  const { getDoc, addOrderData } = usePouchDB();
+  const { getDoc } = usePouchDB();
   const { setOrderList } = useOrderAction();
   const { orderList, orderIdList } = useOrderSelector(['orderList', 'orderIdList']);
 
@@ -34,11 +34,12 @@ export default function FloatingOrderList() {
     };
 
     fetchData();
-  }, [orderIdList, addOrderData]);
+  }, [orderIdList]);
 
   return (
     <S.OrderListContainer>
-      <div>주문내역</div>
+      <div className={'title'}>주문내역</div>
+      <div className={'title'}>총 주문 개수: {orderList.length ?? 0}</div>
       {Array.isArray(orderList) && orderList.length > 0 ? (
         orderList.map(({ name, code }: ProductType, index) => (
           <S.OrderItem key={`order-${index}-${code}`}>

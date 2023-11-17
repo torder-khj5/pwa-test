@@ -1,19 +1,20 @@
 import { type CategoryType } from '@type/categoryType.ts';
 import { useCategoryAction } from '@store/useCategoryStore.ts';
+import { SAMPLE_CATEGORY } from '@constants/category.ts';
 import CategoryItem from '@components/@shared/Category/CategoryItem';
 import { requestCategories } from '@api/categories.ts';
 import * as S from './styles.tsx';
 import { useEffect, useState } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 export default function Category() {
-  const queryClient = useQueryClient();
-
+  // const queryClient = useQueryClient();
   const { data, isLoading } = useQuery(['categories'], requestCategories, {
     retry: 0,
     staleTime: 60 * 5000,
     initialData: () => {
-      return queryClient.getQueryData(['categories']);
+      // return queryClient.getQueryData(['categories']);
+      return SAMPLE_CATEGORY;
     },
     networkMode: 'offlineFirst',
   });

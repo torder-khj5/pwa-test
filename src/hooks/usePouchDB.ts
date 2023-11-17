@@ -45,6 +45,7 @@ export default function usePouchDB() {
       .on('change', (change) => {
         console.log('원격 데이터베이스 변경 감지:', change);
         getAllDocs(); // 리모트 디비가 온체인지 될떄마다 데이터 리프레시 해줘야함
+        document.dispatchEvent(new Event('pouchDBChange'));
       });
   };
 

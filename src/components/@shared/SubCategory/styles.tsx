@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 export const SubCategoryContainer = styled.div`
   display: flex;
   width: 100%;
-  padding: 20px;
+
+  padding: 20px 20px 20px 25px;
   color: ${colors.green_key};
 `;
 
