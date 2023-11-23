@@ -1,6 +1,4 @@
-import { type ProductLanguage } from '@type/product.ts';
 import { type ProductType } from '@type/categoryType.ts';
-import { type rowsValue } from '@pages/HomePage/FloatingOrderList';
 import { withSelector } from './middleware';
 import { devtools, persist } from 'zustand/middleware';
 import { create } from 'zustand';

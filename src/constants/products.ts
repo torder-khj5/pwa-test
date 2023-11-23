@@ -218,7 +218,7 @@ export const PRODUCT_LIST: { data: ProductType[] } = {
       code: 'CJUGH-240152007',
       html: '제주 당근을 첨가물 없이 그대로 착즙한 건강 주스입니다.',
       image: 'https://hyatt.static.torder.co.kr/INFRA_CAFE8002/goods/CJUGH-240152007/1676354577item_700X700.png',
-      price: 1300,
+      price: 13000,
       countryOfOrigin: '',
     },
     {
