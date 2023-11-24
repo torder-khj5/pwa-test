@@ -65,5 +65,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), , VitePWA(pwaOptions)],
+  plugins: [react({ jsxImportSource: '@emotion/react' }), tsconfigPaths(), VitePWA(pwaOptions)],
 });
