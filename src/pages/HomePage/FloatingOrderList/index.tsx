@@ -18,14 +18,6 @@ export default function FloatingOrderList() {
   const { orderList } = useOrderSelector(['orderList']);
   const { orderIdList } = usePouchDBSelector(['orderIdList']);
 
-  // useEffect(() => {
-  //   getAllDocs();
-  // }, []);
-
-  // useEffect(() => {
-  //   subscribeToChanges(); // 변경 감지 이벤트 구독
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,8 +25,7 @@ export default function FloatingOrderList() {
           const orderItems = await Promise.all(
             orderIdList.rows.map(async ({ id, key }: rowsValue) => {
               const doc = await getDoc(id);
-              // return doc?.name ? { name: doc.name, code: doc.code } : null;
-              return doc;
+              return doc?.name ? { name: doc.name, code: doc.code } : null;
             })
           );
           console.log('orderItems: ', orderItems);
@@ -50,25 +41,25 @@ export default function FloatingOrderList() {
 
   console.log('orderList: ', orderList);
 
-  // const renderMenuDetails = (
-  //   <>
-  //     {Array.isArray(orderList) && orderList.length > 0 ? (
-  //       orderList.map(({ name, code }: ProductType, index) => (
-  //         <S.OrderItem key={`order-${index}-${code}`}>
-  //           {index + 1} {name}
-  //         </S.OrderItem>
-  //       ))
-  //     ) : (
-  //       <S.OrderItem>주문내역이 없습니다</S.OrderItem>
-  //     )}
-  //   </>
-  // );
+  const renderMenuDetails = (
+    <>
+      {Array.isArray(orderList) && orderList.length > 0 ? (
+        orderList.map(({ name, code }: ProductType, index) => (
+          <S.OrderItem key={`order-${index}-${code}`}>
+            {index + 1} {name}
+          </S.OrderItem>
+        ))
+      ) : (
+        <S.OrderItem>주문내역이 없습니다</S.OrderItem>
+      )}
+    </>
+  );
 
   return (
     <S.OrderListContainer>
       <div className={'title'}>주문내역</div>
       <div className={'title'}>총 주문 개수: {orderList.length ?? 0}</div>
-      {/* {renderMenuDetails} */}
+      {renderMenuDetails}
     </S.OrderListContainer>
   );
 }

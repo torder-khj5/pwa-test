@@ -20,24 +20,24 @@ export default function ProductList() {
   });
 
   const { addOrderData, getAllDocs } = usePouchDBAction();
-  const { localDB, remoteDB } = usePouchDBSelector(['localDB', 'remoteDB']);
-
-  useEffect(() => {
-    localDB
-      .sync(remoteDB, {
-        live: true,
-        retry: true,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        include_docs: true,
-      })
-      .on('complete', (info) => {
-        console.log('Sync completed:', info);
-      })
-      .on('error', (err) => {
-        console.error('Sync error:', err);
-      });
-  }, []);
+  // const { localDB, remoteDB } = usePouchDBSelector(['localDB', 'remoteDB']);
+  //
+  // useEffect(() => {
+  //   localDB
+  //     .sync(remoteDB, {
+  //       live: true,
+  //       retry: true,
+  //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //       // @ts-expect-error
+  //       include_docs: true,
+  //     })
+  //     .on('complete', (info) => {
+  //       console.log('Sync completed:', info);
+  //     })
+  //     .on('error', (err) => {
+  //       console.error('Sync error:', err);
+  //     });
+  // }, []);
 
   useEffect(() => {
     if (!isLoading && data && data.data) {

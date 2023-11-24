@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import ProductList from '@pages/HomePage/ProductList.tsx';
-import HomePage from '@pages/HomePage';
 import ErrorPage from '@pages/ErrorPage';
 
 import Layout from '@layout';

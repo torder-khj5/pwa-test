@@ -43,6 +43,22 @@ const pouchDBState = () => {
     include_docs: true,
   });
 
+  console.log('sync');
+  localDB
+    .sync(remoteDB, {
+      live: true,
+      retry: true,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      include_docs: true,
+    })
+    .on('complete', (info) => {
+      console.log('Sync completed:', info);
+    })
+    .on('error', (err) => {
+      console.error('Sync error:', err);
+    });
+
   changes.on('change', async (change: PouchDB.Core.ChangesResponseChange<any>) => {
     console.log('store 선언 remote DB changes(원격 디비 변경 감지): ', change);
 
@@ -76,7 +92,14 @@ export const usePouchDBAction = () => ({
   },
   getDoc: async (docId: string) => {
     try {
-      await usePouchDBStore.getState().remoteDB?.get<ProductType>(docId);
+      try {
+        console.log('local');
+        return await usePouchDBStore.getState().localDB?.get<ProductType>(docId);
+      } catch (e) {
+        console.log('remote');
+        return await usePouchDBStore.getState().remoteDB?.get<ProductType>(docId);
+      }
+      // await usePouchDBStore.getState().remoteDB?.get<ProductType>(docId);
     } catch (err) {
       console.log('docId: ', docId);
       console.error(err);
