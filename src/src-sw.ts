@@ -2,10 +2,13 @@ import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { registerRoute } from 'workbox-routing';
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
 import { ExpirationPlugin } from 'workbox-expiration';
+import { setCacheNameDetails } from 'workbox-core';
 
 declare let self: ServiceWorkerGlobalScope;
 
 cleanupOutdatedCaches();
+
+setCacheNameDetails({ prefix: 'public-sw-pwa' });
 
 precacheAndRoute(self.__WB_MANIFEST);
 

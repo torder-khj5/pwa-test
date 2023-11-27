@@ -8,8 +8,8 @@ workbox.core.setCacheNameDetails({ prefix: 'public-sw-pwa' });
 
 // 캐시할 파일 목록
 precacheAndRoute([
-  { url: '/', revision: '2' },
-  { url: '/index.html', revision: '2' },
+  { url: '/', revision: '3' },
+  { url: '/index.html', revision: '3' },
   // 다른 페이지들을 캐싱하려면 여기에 경로를 추가
   ...self.__WB_MANIFEST,
 ]);
