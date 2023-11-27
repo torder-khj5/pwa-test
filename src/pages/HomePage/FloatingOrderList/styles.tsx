@@ -19,6 +19,11 @@ export const OrderListContainer = styled.div`
     background: #e8e8e8;
   }
 
+  & button {
+    width: 100%;
+    text-align: center;
+  }
+
   .title {
     display: flex;
     align-items: center;

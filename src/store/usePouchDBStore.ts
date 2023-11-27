@@ -37,72 +37,70 @@ const pouchDBState = () => {
     orderIdList: null,
   };
 
-  const changes = remoteDB.changes({
-    since: 'now',
+  const syncDB = PouchDB.sync(localDB, remoteDB, {
     live: true,
+    retry: true,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     include_docs: true,
   });
 
-  console.log('sync');
-  localDB
-    .sync(remoteDB, {
-      live: true,
-      retry: true,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      include_docs: true,
+  syncDB
+    .on('change', ({ change, direction }) => {
+      console.log('Change', change);
+      console.log('Direction', direction);
+      usePouchDBAction().getAllDocs();
     })
-    .on('complete', (info) => {
-      console.log('Sync completed:', info);
+    .on('paused', function () {
+      console.log('replication up to date, user went offline');
+      usePouchDBAction().getAllDocs();
     })
-    .on('error', (err) => {
-      console.error('Sync error:', err);
+    .on('active', function () {
+      // replicate resumed (e.g. new changes replicating, user went back online)
+    })
+    .on('denied', function (err) {
+      // a document failed to replicate (e.g. due to permissions)
+      console.log(err);
+    })
+    .on('complete', function (info) {
+      // handle complete
+      console.log(info);
+    })
+    .on('error', function (err) {
+      // handle error
+      console.log(err);
     });
-
-  changes.on('change', async (change: PouchDB.Core.ChangesResponseChange<any>) => {
-    console.log('store 선언 remote DB changes(원격 디비 변경 감지): ', change);
-
-    await usePouchDBAction().getAllDocs();
-    const updateOrderIdList = await remoteDB.allDocs<ProductType>();
-    console.log('updateOrderId: ', updateOrderIdList);
-    // usePouchDBStore.setState({ orderIdList: updateOrderIdList });
-    // usePouchDBAction().setOrderIdList(updateOrderIdList);
-  });
-
-  changes.on('error', (error) => {
-    console.log('Changes error: ', error);
-  });
 
   return state;
 };
 
 export const usePouchDBStore = create(devtools<PouchDBState>(pouchDBState, { name: 'pouchDBState' }));
 
-export const usePouchDBAction = () => ({
+export const usePouchDBAction = (): PouchDBAction => ({
   setOrderIdList: (data: any) => usePouchDBStore.setState({ orderIdList: data }),
   getAllDocs: async () => {
     try {
       console.log('start getAllDocs');
       const res = await usePouchDBStore.getState().remoteDB?.allDocs<ProductType>();
       usePouchDBStore.setState({ orderIdList: res });
-      return res;
+      return res || null;
     } catch (err) {
       console.error(err);
+      return null;
     }
   },
   getDoc: async (docId: string) => {
     try {
       try {
-        console.log('local');
         return await usePouchDBStore.getState().localDB?.get<ProductType>(docId);
       } catch (e) {
-        console.log('remote');
         return await usePouchDBStore.getState().remoteDB?.get<ProductType>(docId);
       }
       // await usePouchDBStore.getState().remoteDB?.get<ProductType>(docId);
     } catch (err) {
       console.log('docId: ', docId);
       console.error(err);
+      return null;
     }
   },
   addOrderData: async (product: ProductType) => {
@@ -111,7 +109,6 @@ export const usePouchDBAction = () => ({
       console.log('새로운 주문: ', res);
       // await usePouchDBAction().getAllDocs();
       // console.log('getAllDocs: ');
-      return res;
     } catch (err) {
       console.error(err);
     }

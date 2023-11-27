@@ -39,8 +39,6 @@ export default function FloatingOrderList() {
     fetchData();
   }, [orderIdList]);
 
-  console.log('orderList: ', orderList);
-
   const renderMenuDetails = (
     <>
       {Array.isArray(orderList) && orderList.length > 0 ? (

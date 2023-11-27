@@ -1,6 +1,6 @@
 import FloatingOrderList from 'src/pages/HomePage/FloatingOrderList';
 import { type ProductType } from '@type/categoryType.ts';
-import { usePouchDBAction, usePouchDBSelector } from '@store/usePouchDBStore.ts';
+import { usePouchDBAction } from '@store/usePouchDBStore.ts';
 import ImageCard from '@pages/HomePage/ImageCard';
 import { PRODUCT_LIST } from '@constants/products.ts';
 import { requestProductList } from '@api/categories.ts';
@@ -20,24 +20,6 @@ export default function ProductList() {
   });
 
   const { addOrderData, getAllDocs } = usePouchDBAction();
-  // const { localDB, remoteDB } = usePouchDBSelector(['localDB', 'remoteDB']);
-  //
-  // useEffect(() => {
-  //   localDB
-  //     .sync(remoteDB, {
-  //       live: true,
-  //       retry: true,
-  //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //       // @ts-expect-error
-  //       include_docs: true,
-  //     })
-  //     .on('complete', (info) => {
-  //       console.log('Sync completed:', info);
-  //     })
-  //     .on('error', (err) => {
-  //       console.error('Sync error:', err);
-  //     });
-  // }, []);
 
   useEffect(() => {
     if (!isLoading && data && data.data) {
@@ -47,9 +29,19 @@ export default function ProductList() {
 
   const handleClick = (product: ProductType) => {
     console.log('주문입력');
-    addOrderData(product).then(async (r) => {
+    addOrderData(product).then(async () => {
       await getAllDocs();
     }); // 데이터만 쏴주면 댐 -> 훅 안에서 알아서 데이터 갱신 시킴
+
+    // // Show alert when the user clicks on a product
+    // const userConfirmed = window.confirm('주문을 추가하시겠습니까?');
+    //
+    // if (userConfirmed) {
+    //   addOrderData(product).then(async (r) => {
+    //     await getAllDocs();
+    //   });
+    // }
+
     console.log('주문입력 done');
   };
 
