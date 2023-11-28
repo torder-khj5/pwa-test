@@ -66,7 +66,7 @@ export default function BottomBar() {
 
   return (
     <S.BottomBarContainer>
-      <Modal open={true}>
+      <Modal>
         <Modal.Trigger>
           <S.BottomBarButton>
             <S.IconArea>
