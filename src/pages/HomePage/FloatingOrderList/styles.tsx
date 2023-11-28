@@ -6,7 +6,7 @@ export const OrderListContainer = styled.div`
   left: 0;
   z-index: 999;
 
-  width: 19rem;
+  width: 15rem;
   height: 25rem;
 
   overflow: scroll;

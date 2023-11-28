@@ -54,6 +54,7 @@ export const colors = {
   green_800: '#135339',
   green_900: '#0B3222',
   green_key: '#769532',
+  green_key_100: '#94ab41',
 
   teal_50: '#E7F6F8',
   teal_100: '#CFEEF2',

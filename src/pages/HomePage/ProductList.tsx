@@ -1,7 +1,7 @@
-import FloatingOrderList from 'src/pages/HomePage/FloatingOrderList';
 import { type ProductType } from '@type/categoryType.ts';
 import { usePouchDBAction } from '@store/usePouchDBStore.ts';
 import ImageCard from '@pages/HomePage/ImageCard';
+import BottomBar from '@pages/HomePage/BottomBar';
 import { PRODUCT_LIST } from '@constants/products.ts';
 import { requestProductList } from '@api/categories.ts';
 import * as S from './styles.tsx';
@@ -51,7 +51,7 @@ export default function ProductList() {
 
   return (
     <>
-      <FloatingOrderList />
+      {/* <FloatingOrderList /> */}
       <S.ProductContainer>
         {products?.map((product: ProductType, index) => {
           const { image, name, price } = product;
@@ -66,6 +66,7 @@ export default function ProductList() {
           );
         })}
       </S.ProductContainer>
+      <BottomBar />
     </>
   );
 }

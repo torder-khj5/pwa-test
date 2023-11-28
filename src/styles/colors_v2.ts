@@ -16,6 +16,7 @@ export const palette = {
   red_300: '#EC6362',
   red_400: '#F53839',
   red_500: '#F91515',
+  red_550: '#fd0202',
   red_600: '#EB0018',
   red_700: '#D90013',
   red_800: '#CC0009',
@@ -76,6 +77,8 @@ export const palette = {
   blue_800: '#05367A',
   blue_900: '#032049',
 
+  gray_10: '#F7F9FB',
+  gray_20: '#F1F4F7',
   gray_50: '#EBECF4',
   gray_100: '#CCD2DD',
   gray_200: '#ADB4C3',
@@ -90,19 +93,31 @@ export const palette = {
   black_50: '#F3F3F3',
   black_100: '#E4E4E4',
   black_200: '#CACACA',
+  black_250: '#ccc',
   black_300: '#AFAFAF',
   black_400: '#959595',
+  black_450: '#777',
   black_500: '#7A7A7A',
   black_600: '#626262',
   black_700: '#494949',
+  black_750: '#444',
   black_800: '#313131',
   black_900: '#181818',
 
   white: '#FFFFFF',
-  // black: '#000000',
-  // background: '#F9F9F9',
-  // line: '#E1E1E1',
-  // error: '#FF2222',
+  black: '#000000',
+  background_10: '#F8F9FB',
+  background_20: '#F4F4F6',
+  box_bg: '#F8F9FB',
+  background: '#F9F9F9',
+  box_line: '#D7DCE4',
+  link_text: '#323a49',
+  line: '#E1E1E1',
+  error: '#FF2222',
   // success: '#38C08E',
   // dimmed: 'rgba(17, 17, 17, 0.80)',
 };
+
+type PaletteType = typeof palette;
+
+export type PaletteKeyType = keyof PaletteType;
