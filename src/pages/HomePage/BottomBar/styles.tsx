@@ -24,14 +24,6 @@ export const BottomBarButton = styled.div`
   background-color: ${colors.green_key_100};
 `;
 
-export const IconArea = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 100%;
-`;
-
 export const OrderModalWrapper = styled.div`
   display: flex;
 

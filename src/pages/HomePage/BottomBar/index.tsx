@@ -72,10 +72,10 @@ export default function BottomBar() {
       <Modal>
         <Modal.Trigger>
           <S.BottomBarButton>
-            <S.IconArea>
-              <img src={bill} width={30} height={30} alt={'icon_bill'} />
-            </S.IconArea>
-            <Typography tag="h7">주문내역</Typography>
+            <img src={bill} width={30} height={30} alt={'icon_bill'} />
+            <div style={{ marginLeft: '5px' }}>
+              <Typography tag="h7">주문내역</Typography>
+            </div>
           </S.BottomBarButton>
         </Modal.Trigger>
         <Modal.Content>
