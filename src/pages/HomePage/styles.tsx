@@ -42,3 +42,9 @@ export const ProductItemInfo = styled.div`
     padding-inline: 0.2vw;
   }
 `;
+
+export const ModalButton = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 25px 20px 20px;
+`;

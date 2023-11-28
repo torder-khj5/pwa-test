@@ -73,6 +73,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.25"],\
             ["postcss-styled-syntax", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:0.4.0"],\
             ["pouchdb", "npm:8.0.1"],\
+            ["pouchdb-find", "npm:8.0.1"],\
             ["prettier", "npm:2.8.8"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"],\
@@ -11961,10 +11962,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:8dceb77a7462c0ea059d836cda058706efe43b8c115eab83047c81bf354f63054122591dc920c907577dff0fb2c2932f92b621895c7360f86d5587e932f0747d#npm:2.6.7", {\
-          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-ba9d8762fb/0/cache/node-fetch-npm-2.6.7-777aa2a6df-8d816ffd1e.zip/node_modules/node-fetch/",\
+        ["virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7", {\
+          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-3db49f7227/0/cache/node-fetch-npm-2.6.7-777aa2a6df-8d816ffd1e.zip/node_modules/node-fetch/",\
           "packageDependencies": [\
-            ["node-fetch", "virtual:8dceb77a7462c0ea059d836cda058706efe43b8c115eab83047c81bf354f63054122591dc920c907577dff0fb2c2932f92b621895c7360f86d5587e932f0747d#npm:2.6.7"],\
+            ["node-fetch", "virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7"],\
             ["@types/encoding", null],\
             ["encoding", null],\
             ["whatwg-url", "npm:5.0.0"]\
@@ -12664,12 +12665,142 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["leveldown", "npm:5.6.0"],\
             ["levelup", "npm:4.4.0"],\
             ["ltgt", "npm:2.2.1"],\
-            ["node-fetch", "virtual:8dceb77a7462c0ea059d836cda058706efe43b8c115eab83047c81bf354f63054122591dc920c907577dff0fb2c2932f92b621895c7360f86d5587e932f0747d#npm:2.6.7"],\
+            ["node-fetch", "virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7"],\
             ["readable-stream", "npm:1.1.14"],\
             ["spark-md5", "npm:3.0.2"],\
             ["through2", "npm:3.0.2"],\
             ["uuid", "npm:8.3.2"],\
             ["vuvuzela", "npm:1.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-abstract-mapreduce", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-abstract-mapreduce-npm-8.0.1-609a0b8ff9-708fb58269.zip/node_modules/pouchdb-abstract-mapreduce/",\
+          "packageDependencies": [\
+            ["pouchdb-abstract-mapreduce", "npm:8.0.1"],\
+            ["pouchdb-binary-utils", "npm:8.0.1"],\
+            ["pouchdb-collate", "npm:8.0.1"],\
+            ["pouchdb-collections", "npm:8.0.1"],\
+            ["pouchdb-errors", "npm:8.0.1"],\
+            ["pouchdb-fetch", "npm:8.0.1"],\
+            ["pouchdb-mapreduce-utils", "npm:8.0.1"],\
+            ["pouchdb-md5", "npm:8.0.1"],\
+            ["pouchdb-utils", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-binary-utils", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-binary-utils-npm-8.0.1-88d2ad3c0d-c2316d8002.zip/node_modules/pouchdb-binary-utils/",\
+          "packageDependencies": [\
+            ["pouchdb-binary-utils", "npm:8.0.1"],\
+            ["buffer-from", "npm:1.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-collate", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-collate-npm-8.0.1-38e0457968-5031f40365.zip/node_modules/pouchdb-collate/",\
+          "packageDependencies": [\
+            ["pouchdb-collate", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-collections", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-collections-npm-8.0.1-8d400b5c80-df41cbe500.zip/node_modules/pouchdb-collections/",\
+          "packageDependencies": [\
+            ["pouchdb-collections", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-errors", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-errors-npm-8.0.1-f060c9ac8d-946e82861f.zip/node_modules/pouchdb-errors/",\
+          "packageDependencies": [\
+            ["pouchdb-errors", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-fetch", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-fetch-npm-8.0.1-7ecb76d929-1a456805f7.zip/node_modules/pouchdb-fetch/",\
+          "packageDependencies": [\
+            ["pouchdb-fetch", "npm:8.0.1"],\
+            ["abort-controller", "npm:3.0.0"],\
+            ["fetch-cookie", "npm:0.11.0"],\
+            ["node-fetch", "virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-find", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-find-npm-8.0.1-08dedca122-c473f58baf.zip/node_modules/pouchdb-find/",\
+          "packageDependencies": [\
+            ["pouchdb-find", "npm:8.0.1"],\
+            ["pouchdb-abstract-mapreduce", "npm:8.0.1"],\
+            ["pouchdb-collate", "npm:8.0.1"],\
+            ["pouchdb-errors", "npm:8.0.1"],\
+            ["pouchdb-fetch", "npm:8.0.1"],\
+            ["pouchdb-md5", "npm:8.0.1"],\
+            ["pouchdb-selector-core", "npm:8.0.1"],\
+            ["pouchdb-utils", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-mapreduce-utils", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-mapreduce-utils-npm-8.0.1-ac43f6b124-7c0c80b9c8.zip/node_modules/pouchdb-mapreduce-utils/",\
+          "packageDependencies": [\
+            ["pouchdb-mapreduce-utils", "npm:8.0.1"],\
+            ["pouchdb-collections", "npm:8.0.1"],\
+            ["pouchdb-utils", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-md5", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-md5-npm-8.0.1-771cf19d27-ab90941577.zip/node_modules/pouchdb-md5/",\
+          "packageDependencies": [\
+            ["pouchdb-md5", "npm:8.0.1"],\
+            ["pouchdb-binary-utils", "npm:8.0.1"],\
+            ["spark-md5", "npm:3.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-selector-core", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-selector-core-npm-8.0.1-e6ae869245-92862fff8a.zip/node_modules/pouchdb-selector-core/",\
+          "packageDependencies": [\
+            ["pouchdb-selector-core", "npm:8.0.1"],\
+            ["pouchdb-collate", "npm:8.0.1"],\
+            ["pouchdb-utils", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pouchdb-utils", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/pouchdb-utils-npm-8.0.1-c4d8d9e39d-4ba6ac24ab.zip/node_modules/pouchdb-utils/",\
+          "packageDependencies": [\
+            ["pouchdb-utils", "npm:8.0.1"],\
+            ["clone-buffer", "npm:1.0.0"],\
+            ["immediate", "npm:3.3.0"],\
+            ["pouchdb-collections", "npm:8.0.1"],\
+            ["pouchdb-errors", "npm:8.0.1"],\
+            ["pouchdb-md5", "npm:8.0.1"],\
+            ["uuid", "npm:8.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14658,6 +14789,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.25"],\
             ["postcss-styled-syntax", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:0.4.0"],\
             ["pouchdb", "npm:8.0.1"],\
+            ["pouchdb-find", "npm:8.0.1"],\
             ["prettier", "npm:2.8.8"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"],\

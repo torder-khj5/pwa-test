@@ -6,7 +6,7 @@ import { type rowsValue } from '@pages/HomePage/FloatingOrderList';
 import Typography from '@components/Typography';
 import { CloseButton } from '@components/@headless/Modal/CloseButton.tsx';
 import Modal from '@components/@headless/Modal';
-import bill from '@assets/icons/icon-bill.png';
+import bill from '@assets/icons/icon-bill.svg';
 import * as S from './styles.tsx';
 import { useEffect } from 'react';
 
@@ -40,7 +40,7 @@ export default function BottomBar() {
   const renderMenuDetails = (
     <>
       {Array.isArray(orderList) && orderList.length > 0 ? (
-        orderList.map(({ name, code, price }: ProductType, index) => (
+        orderList?.map(({ name, code, price }: ProductType, index) => (
           <S.TableRow key={`order-${index}-${code}`}>
             <Typography tag="h6" fontWeight={400} color={palette.gray_600}>
               {name}
@@ -49,16 +49,19 @@ export default function BottomBar() {
               {price}원
             </Typography>
             <Typography tag="h6" fontWeight={400} color={palette.blue_500}>
-              {index + 1}
+              {1}
             </Typography>
             <Typography tag="h6" fontWeight={600} color={palette.gray_600}>
-              {price * (index + 1)}원
+              {price}원
             </Typography>
           </S.TableRow>
         ))
       ) : (
         <S.TableRow>
-          <Typography tag="h6">주문내역이 없습니다</Typography>
+          {/* <Typography tag="h6">주문내역이 없습니다</Typography> */}
+          <Typography tag="h6">
+            {orderList === null ? '주문 내역을 불러오는 중입니다' : '주문내역이 없습니다'}
+          </Typography>
         </S.TableRow>
       )}
     </>

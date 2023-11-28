@@ -3,13 +3,29 @@ import { usePouchDBAction } from '@store/usePouchDBStore.ts';
 import ImageCard from '@pages/HomePage/ImageCard';
 import BottomBar from '@pages/HomePage/BottomBar';
 import { PRODUCT_LIST } from '@constants/products.ts';
+import Typography from '@components/Typography';
+import { CommonButton } from '@components/CommonButton';
+import ModalContent from '@components/@headless/Modal/Content.tsx';
+import Modal from '@components/@headless/Modal';
 import { requestProductList } from '@api/categories.ts';
 import * as S from './styles.tsx';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
+const initProduct: ProductType = {
+  languageName: { ko: '', en: '', jp: '', zh_hans: '', zh_hant: '' },
+  name: '',
+  code: '',
+  html: '',
+  image: '',
+  price: 0,
+  countryOfOrigin: '',
+  date: undefined,
+};
+
 export default function ProductList() {
   const [products, setProducts] = useState(([] as ProductType[]) || []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data, isLoading } = useQuery(['prod'], requestProductList, {
     retry: 0,
     staleTime: 60 * 5000,
@@ -18,6 +34,7 @@ export default function ProductList() {
     },
     networkMode: 'offlineFirst',
   });
+  const [selectProduct, setSelectProduct] = useState<ProductType>(initProduct);
 
   const { addOrderData, getAllDocs } = usePouchDBAction();
 
@@ -28,20 +45,17 @@ export default function ProductList() {
   }, [data, isLoading]);
 
   const handleClick = (product: ProductType) => {
+    setIsModalOpen(true);
+    setSelectProduct(product);
+  };
+
+  const requestOrder = () => {
     console.log('주문입력');
-    addOrderData(product).then(async () => {
+    const addData = { ...selectProduct, date: new Date() };
+    addOrderData(addData).then(async () => {
       await getAllDocs();
-    }); // 데이터만 쏴주면 댐 -> 훅 안에서 알아서 데이터 갱신 시킴
-
-    // // Show alert when the user clicks on a product
-    // const userConfirmed = window.confirm('주문을 추가하시겠습니까?');
-    //
-    // if (userConfirmed) {
-    //   addOrderData(product).then(async (r) => {
-    //     await getAllDocs();
-    //   });
-    // }
-
+    });
+    setIsModalOpen(false);
     console.log('주문입력 done');
   };
 
@@ -67,6 +81,14 @@ export default function ProductList() {
         })}
       </S.ProductContainer>
       <BottomBar />
+      <Modal open={isModalOpen}>
+        <ModalContent>
+          <Typography tag="h5">{selectProduct.name}을(를) 주문 하시겠습니까?</Typography>
+          <S.ModalButton>
+            <CommonButton onButtonClick={() => requestOrder()} label={'주문하기'} btnSize={'md'} />
+          </S.ModalButton>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
