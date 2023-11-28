@@ -41,12 +41,12 @@ export const OrderModalWrapper = styled.div`
   align-items: flex-start;
   width: 85vw;
   height: 70vh;
+
+  overflow: scroll;
 `;
 
 export const OrderModalContents = styled.div`
   display: flex;
-  flex: 1 0 0;
-
   flex-direction: column;
   gap: var(--spacing-spacing-8, 28px);
   align-items: flex-start;
@@ -69,6 +69,8 @@ export const OrderModalListTable = styled.div`
   align-items: flex-start;
   align-self: stretch;
   width: 100%;
+  height: calc(70vh - 60px);
+  overflow: scroll;
 `;
 
 export const TableHeader = styled.div`
@@ -104,8 +106,6 @@ export const TableHeader = styled.div`
 
 export const TableContents = styled.div`
   width: 100%;
-  height: 302px;
-  overflow: scroll;
 `;
 
 export const TableRow = styled.div`
@@ -128,13 +128,16 @@ export const TableRow = styled.div`
     justify-content: center;
     width: 100%;
     padding: 0 var(--border-radius-border-radius-l, 16px);
+
+    word-break: keep-all;
   }
 
   & h6:first-of-type {
     justify-content: flex-start;
+    text-align: left;
   }
 
-  & h6:last-of-type {
+  & h6:nth-of-type(4) {
     justify-content: flex-end;
   }
 `;

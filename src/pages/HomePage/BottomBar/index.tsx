@@ -57,14 +57,16 @@ export default function BottomBar() {
           </S.TableRow>
         ))
       ) : (
-        <S.TableRow>주문내역이 없습니다</S.TableRow>
+        <S.TableRow>
+          <Typography tag="h6">주문내역이 없습니다</Typography>
+        </S.TableRow>
       )}
     </>
   );
 
   return (
     <S.BottomBarContainer>
-      <Modal>
+      <Modal open={true}>
         <Modal.Trigger>
           <S.BottomBarButton>
             <S.IconArea>
