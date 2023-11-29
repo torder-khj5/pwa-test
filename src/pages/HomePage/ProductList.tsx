@@ -6,9 +6,11 @@ import { PRODUCT_LIST } from '@constants/products.ts';
 import Typography from '@components/Typography';
 import { CommonButton } from '@components/CommonButton';
 import ModalContent from '@components/@headless/Modal/Content.tsx';
+import { CloseButton } from '@components/@headless/Modal/CloseButton.tsx';
 import Modal from '@components/@headless/Modal';
 import { requestProductList } from '@api/categories.ts';
 import * as S from './styles.tsx';
+import { ModalHeaderArea } from './styles.tsx';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -83,6 +85,7 @@ export default function ProductList() {
       <BottomBar />
       <Modal open={isModalOpen}>
         <ModalContent>
+          <S.ModalHeaderArea>{/* <CloseButton /> */}</S.ModalHeaderArea>
           <Typography tag="h5">{selectProduct.name}을(를) 주문 하시겠습니까?</Typography>
           <S.ModalButton>
             <CommonButton onButtonClick={() => requestOrder()} label={'주문하기'} btnSize={'md'} />
