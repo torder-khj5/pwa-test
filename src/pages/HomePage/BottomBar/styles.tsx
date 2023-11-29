@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 export const BottomBarContainer = styled.div`
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: 5px;
   display: flex;
   justify-content: flex-end;
 
@@ -17,11 +17,12 @@ export const BottomBarButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20vw;
+  width: 15vw;
   height: 5.7vw;
+  margin: 0 5px 5px;
   font-size: 16px;
-  color: white;
   background-color: ${colors.green_key_100};
+  border-radius: 10px;
 `;
 
 export const OrderModalWrapper = styled.div`

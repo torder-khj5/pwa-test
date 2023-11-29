@@ -11,7 +11,7 @@ interface CategoryItemProps {
 export const CategoryItem = ({ code, itemName, isSelect, onItemClick }: CategoryItemProps) => {
   return (
     <S.CategoryItemWrapper isSelect={isSelect} onClick={() => onItemClick(code)}>
-      {code + ' ' + itemName}
+      {itemName}
     </S.CategoryItemWrapper>
   );
 };

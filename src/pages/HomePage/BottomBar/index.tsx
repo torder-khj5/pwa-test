@@ -74,7 +74,9 @@ export default function BottomBar() {
           <S.BottomBarButton>
             <img src={bill} width={30} height={30} alt={'icon_bill'} />
             <div style={{ marginLeft: '5px' }}>
-              <Typography tag="h7">주문내역</Typography>
+              <Typography tag="h7" color={'white'}>
+                주문내역
+              </Typography>
             </div>
           </S.BottomBarButton>
         </Modal.Trigger>
