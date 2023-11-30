@@ -10,19 +10,24 @@ import bill from '@assets/icons/icon-bill.svg';
 import * as S from './styles.tsx';
 import { useEffect, useState } from 'react';
 
-const OrderItem = ({ name, price, total }: Partial<ProductType> & { total: number }) => (
+const OrderItem = ({
+  name,
+  price,
+  quantity,
+  total,
+}: Pick<ProductType, 'name' | 'price'> & { quantity: number; total: number }) => (
   <S.TableRow>
     <Typography tag="h6" fontWeight={400} color={palette.gray_600}>
       {name}
     </Typography>
     <Typography tag="h6" fontWeight={400} color={palette.gray_600}>
-      {price}원
+      {price.toLocaleString()}원
     </Typography>
     <Typography tag="h6" fontWeight={400} color={palette.blue_500}>
-      {1}
+      x{quantity}
     </Typography>
     <Typography tag="h6" fontWeight={600} color={palette.gray_600}>
-      {total}원
+      {total.toLocaleString()}원
     </Typography>
   </S.TableRow>
 );
@@ -60,6 +65,25 @@ export default function BottomBar() {
     }
   };
 
+  const calculateQuantityAndTotal = (orderList: ProductType[]) => {
+    const quantityAndTotalMap: Record<string, { quantity: number; total: number; price: number }> = {};
+    orderList.forEach(({ name, price }) => {
+      if (quantityAndTotalMap[name]) {
+        quantityAndTotalMap[name].quantity += 1;
+        quantityAndTotalMap[name].total += price;
+        return;
+      }
+      quantityAndTotalMap[name] = { quantity: 1, total: price, price };
+    });
+
+    return Object.entries(quantityAndTotalMap).map(([name, { quantity, total, price }]) => ({
+      name,
+      price,
+      quantity,
+      total,
+    }));
+  };
+
   useEffect(() => {
     fetchData();
     calculateTotal();
@@ -67,8 +91,9 @@ export default function BottomBar() {
 
   const renderOrderList = () => {
     if (Array.isArray(orderList) && orderList.length > 0) {
-      return orderList.map(({ name, code, price }: ProductType, index) => (
-        <OrderItem key={`order-${index}-${code}`} name={name} price={price} total={price} />
+      const processedOrderList = calculateQuantityAndTotal(orderList);
+      return processedOrderList.map(({ name, price, quantity, total }, index) => (
+        <OrderItem key={`order-${index}-${name}`} name={name} price={price} quantity={quantity} total={total} />
       ));
     } else {
       return (
@@ -114,7 +139,7 @@ export default function BottomBar() {
               </S.OrderModalListTable>
               <S.OrderModalTotalPriceArea>
                 <Typography tag="h5">합계</Typography>
-                <Typography tag="h5">{total}원</Typography>
+                <Typography tag="h5">{total.toLocaleString()}원</Typography>
               </S.OrderModalTotalPriceArea>
             </S.OrderModalContents>
           </S.OrderModalWrapper>
