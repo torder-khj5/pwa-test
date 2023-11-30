@@ -1,3 +1,4 @@
+import { palette } from '@styles/colors_v2.ts';
 import styled from '@emotion/styled';
 
 export const HomeContainer = styled.div`
@@ -23,10 +24,11 @@ export const ProductItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 25vw;
+  padding: 2px;
   margin-bottom: 1.5vw;
   overflow: hidden;
 
-  border: 1px solid red;
+  border: 1px solid ${palette.gray_20};
   border-radius: 0.7813vw;
 `;
 
