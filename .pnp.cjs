@@ -77,6 +77,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.8.8"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"],\
+            ["react-hot-toast", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:2.4.1"],\
             ["react-router-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:6.11.2"],\
             ["rollup-plugin-node-polyfills", "npm:0.2.1"],\
             ["socket.io-client", "npm:4.6.1"],\
@@ -9249,6 +9250,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["goober", [\
+        ["npm:2.1.13", {\
+          "packageLocation": "./.yarn/cache/goober-npm-2.1.13-7afde46601-0c00b90d26.zip/node_modules/goober/",\
+          "packageDependencies": [\
+            ["goober", "npm:2.1.13"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:5cc2d2d9eda1cec0c01ff7e09dae38521a726abb7d042a088b64d6b71559b302c5a27825ab0db44fd24d4bbe19b20fa7994ab33c723d0d06c9f358ce7a2d7e14#npm:2.1.13", {\
+          "packageLocation": "./.yarn/__virtual__/goober-virtual-650cdb1d69/0/cache/goober-npm-2.1.13-7afde46601-0c00b90d26.zip/node_modules/goober/",\
+          "packageDependencies": [\
+            ["goober", "virtual:5cc2d2d9eda1cec0c01ff7e09dae38521a726abb7d042a088b64d6b71559b302c5a27825ab0db44fd24d4bbe19b20fa7994ab33c723d0d06c9f358ce7a2d7e14#npm:2.1.13"],\
+            ["@types/csstype", null],\
+            ["csstype", null]\
+          ],\
+          "packagePeers": [\
+            "@types/csstype",\
+            "csstype"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["gopd", [\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/gopd-npm-1.0.1-10c1d0b534-a5ccfb8806.zip/node_modules/gopd/",\
@@ -13104,6 +13127,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-hot-toast", [\
+        ["npm:2.4.1", {\
+          "packageLocation": "./.yarn/cache/react-hot-toast-npm-2.4.1-923d48e94b-3e337816db.zip/node_modules/react-hot-toast/",\
+          "packageDependencies": [\
+            ["react-hot-toast", "npm:2.4.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:2.4.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-hot-toast-virtual-5cc2d2d9ed/0/cache/react-hot-toast-npm-2.4.1-923d48e94b-3e337816db.zip/node_modules/react-hot-toast/",\
+          "packageDependencies": [\
+            ["react-hot-toast", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:2.4.1"],\
+            ["@types/react", "npm:18.2.6"],\
+            ["@types/react-dom", "npm:18.2.4"],\
+            ["goober", "virtual:5cc2d2d9eda1cec0c01ff7e09dae38521a726abb7d042a088b64d6b71559b302c5a27825ab0db44fd24d4bbe19b20fa7994ab33c723d0d06c9f358ce7a2d7e14#npm:2.1.13"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-is", [\
         ["npm:16.13.1", {\
           "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-f7a19ac349.zip/node_modules/react-is/",\
@@ -14793,6 +14843,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.8.8"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:18.2.0"],\
+            ["react-hot-toast", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:2.4.1"],\
             ["react-router-dom", "virtual:d1d73de30ef35734c5ccf3754f7de72fc1462cf29ab4d81ba7e681fa396809fd20f99bf6a1d52fa30da60ce18e4d167d4185b5db7c71ff49445b7ede7abc2b32#npm:6.11.2"],\
             ["rollup-plugin-node-polyfills", "npm:0.2.1"],\
             ["socket.io-client", "npm:4.6.1"],\

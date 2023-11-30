@@ -47,12 +47,12 @@ const pouchDBState = () => {
 
   syncDB
     .on('change', ({ change, direction }) => {
-      console.log('Change', change);
-      console.log('Direction', direction);
+      // console.log('Change', change);
+      // console.log('Direction', direction);
       usePouchDBAction().getAllDocs();
     })
     .on('paused', function () {
-      console.log('replication up to date, user went offline');
+      // console.log('replication up to date, user went offline');
       usePouchDBAction().getAllDocs();
     })
     .on('active', function () {
@@ -80,7 +80,6 @@ export const usePouchDBAction = (): PouchDBAction => ({
   setOrderIdList: (data: any) => usePouchDBStore.setState({ orderIdList: data }),
   getAllDocs: async () => {
     try {
-      console.log('start getAllDocs');
       const res = await usePouchDBStore.getState().remoteDB?.allDocs<ProductType>();
       usePouchDBStore.setState({ orderIdList: res });
       return res || null;

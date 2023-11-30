@@ -8,7 +8,8 @@ export interface ProductType {
   image: string;
   price: number;
   countryOfOrigin: string;
-  date?: Date;
+  date: Date;
+  tableNum: string;
 }
 
 export interface ChildCategoryType {

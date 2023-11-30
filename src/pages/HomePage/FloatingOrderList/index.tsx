@@ -28,7 +28,7 @@ export default function FloatingOrderList() {
               return doc?.name ? { name: doc.name, code: doc.code } : null;
             })
           );
-          console.log('orderItems: ', orderItems);
+          // console.log('orderItems: ', orderItems);
           setOrderList(orderItems);
         }
       } catch (error) {

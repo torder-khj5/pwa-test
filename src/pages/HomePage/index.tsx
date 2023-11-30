@@ -1,7 +1,16 @@
+import { type ProductType } from '@type/categoryType.ts';
 import { colors } from '@styles/colors.ts';
-import { useCategoryAction, useCategorySelector } from '@store/useCategoryStore.ts';
+import { useTableAction, useTableSelector } from '@store/useTableStore.ts';
+import { initProduct } from '@pages/HomePage/ProductList.tsx';
+import Typography from '@components/Typography';
+import { CommonButton } from '@components/CommonButton';
+import ModalContent from '@components/@headless/Modal/Content.tsx';
+import { CloseButton } from '@components/@headless/Modal/CloseButton.tsx';
+import Modal from '@components/@headless/Modal';
+import Button from '@components/@headless/ListBox/Button.tsx';
 import * as S from './styles.tsx';
-import PouchDB from 'pouchdb';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function genNewDoc() {
   return {
@@ -36,86 +45,38 @@ function genNewDoc() {
 }
 
 export default function HomePage() {
-  const { getProducts } = useCategoryAction();
-  const { products } = useCategorySelector(['products']);
-  console.log('products: ', getProducts());
+  const { tableList } = useTableSelector(['tableList', 'selectTable']);
+  const { setSelectTable } = useTableAction();
+  const navigator = useNavigate();
 
-  async function addData() {
-    try {
-      const db = new PouchDB('test'); // 로컬 PouchDB 데이터베이스 생성
-      const remoteDB = new PouchDB('http://admin:0000@192.168.101.6:6984/test');
+  const handleClickTable = (selectTable: string) => {
+    setSelectTable(selectTable);
+    navigator('/order');
+  };
 
-      alert('Hi pouchdb!');
-      // DB 연결 및 동기화
-      db.sync(remoteDB, {
-        live: true,
-        retry: true,
-      });
-
-      alert('Connect pouchdb!');
-      db.changes().on('change', (change) => {
-        console.log('로컬 데이터베이스 변경 감지:', change);
-      });
-
-      const response = await db.put(genNewDoc());
-      console.log('New data added:', response);
-
-      // 데이터 조회 (Read)
-      return await db.get(response.id);
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  }
-
-  async function getInitData() {
-    const db = new PouchDB('store'); // 로컬 PouchDB 데이터베이스 생성
-    // remote DB에서 데이터 가져오도록
-    const remoteDB = new PouchDB('http://admin:0000@192.168.101.6:6984/store');
-
-    // DB 연결 및 동기화
-    await db.sync(remoteDB, {
-      live: true,
-      retry: true,
+  const renderTables = () => {
+    return tableList.map((selectTable, index) => {
+      return (
+        <div style={{ margin: '5px' }} key={'table' + index}>
+          <CommonButton
+            key={`btn` + index}
+            onButtonClick={() => handleClickTable(selectTable)}
+            label={selectTable}
+            btnSize={'md'}
+          />
+        </div>
+      );
     });
-
-    await db.changes().on('change', (change) => {
-      console.log('로컬 데이터베이스 변경 감지:', change);
-    });
-
-    // const response = await db.put(genNewDoc());
-    // console.log('New data added:', response);
-    //
-    // // 데이터 조회 (Read)
-    // return await db.get(response.id);
-  }
+  };
 
   function handleClickEvent() {
     console.log('handleClick!');
-    try {
-      addData().then((r) => console.log(r));
-    } catch (e) {
-      console.log('error: ', e);
-    }
   }
 
   return (
     <S.HomeContainer>
-      {/* {products?.map(({ src, name }: Img) => { */}
-      {/* return <ImageCard src={src} key={'key' + name} />; */}
-      {/* })} */}
-      <button
-        onClick={handleClickEvent}
-        style={{
-          width: '100px',
-          height: '40px',
-          top: '150px',
-          right: '50%',
-          border: `1px solid ${colors.green_key}`,
-        }}
-      >
-        test btn
-      </button>
+      테이블을 선택해주세요.
+      <div style={{ display: 'flex' }}>{renderTables()}</div>
     </S.HomeContainer>
   );
 }

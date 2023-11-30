@@ -1,5 +1,8 @@
+import { type OrderType } from '@type/orderType.ts';
 import { type ProductType } from '@type/categoryType.ts';
+import { useTableSelector } from '@store/useTableStore.ts';
 import { usePouchDBAction } from '@store/usePouchDBStore.ts';
+import TotalOrder from '@pages/HomePage/TotalOrder';
 import ImageCard from '@pages/HomePage/ImageCard';
 import BottomBar from '@pages/HomePage/BottomBar';
 import { PRODUCT_LIST } from '@constants/products.ts';
@@ -12,7 +15,7 @@ import * as S from './styles.tsx';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-const initProduct: ProductType = {
+export const initProduct: ProductType = {
   languageName: { ko: '', en: '', jp: '', zh_hans: '', zh_hant: '' },
   name: '',
   code: '',
@@ -20,7 +23,8 @@ const initProduct: ProductType = {
   image: '',
   price: 0,
   countryOfOrigin: '',
-  date: undefined,
+  date: new Date(),
+  tableNum: '0',
 };
 
 export default function ProductList() {
@@ -35,6 +39,7 @@ export default function ProductList() {
     networkMode: 'offlineFirst',
   });
   const [selectProduct, setSelectProduct] = useState<ProductType>(initProduct);
+  const { selectTable } = useTableSelector(['selectTable']);
 
   const { addOrderData, getAllDocs } = usePouchDBAction();
 
@@ -51,7 +56,7 @@ export default function ProductList() {
 
   const requestOrder = () => {
     console.log('주문입력');
-    const addData = { ...selectProduct, date: new Date() };
+    const addData = { ...selectProduct, date: new Date(), tableNum: selectTable };
     addOrderData(addData).then(async () => {
       await getAllDocs();
     });
@@ -79,7 +84,8 @@ export default function ProductList() {
           );
         })}
       </S.ProductContainer>
-      <BottomBar />
+      {/* <BottomBar /> */}
+      <TotalOrder />
       <Modal open={isModalOpen}>
         <ModalContent>
           <S.ModalHeaderArea>{/* <CloseButton /> */}</S.ModalHeaderArea>

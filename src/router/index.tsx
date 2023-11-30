@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import ProductList from '@pages/HomePage/ProductList.tsx';
+import HomePage from '@pages/HomePage';
 import ErrorPage from '@pages/ErrorPage';
 
 import Layout from '@layout';
@@ -8,7 +9,7 @@ import { Suspense } from 'react';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/order',
     element: (
       <Suspense fallback={<div>loading...</div>}>
         <Layout />
@@ -21,12 +22,13 @@ const router = createBrowserRouter([
         // element: <HomePage />,
         element: <ProductList />,
       },
-      {
-        path: '/test',
-        element: <ProductList />,
-      },
+      // {
+      //   path: '/order',
+      //   element: <ProductList />,
+      // },
     ],
   },
+  { path: '/', element: <HomePage /> },
 ]);
 
 export default router;

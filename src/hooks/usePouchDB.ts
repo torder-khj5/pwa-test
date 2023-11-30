@@ -43,7 +43,7 @@ export default function usePouchDB() {
         live: true,
       })
       .on('change', (change) => {
-        console.log('원격 데이터베이스 변경 감지:', change);
+        // console.log('원격 데이터베이스 변경 감지:', change);
         getAllDocs(); // 리모트 디비가 온체인지 될떄마다 데이터 리프레시 해줘야함
         document.dispatchEvent(new Event('pouchDBChange'));
       });
@@ -63,11 +63,10 @@ export default function usePouchDB() {
 
   const addOrderData = async (product: ProductType) => {
     const doc = product;
-    console.log('doc: ', doc);
     try {
       // post는 _id를 자동으로 생성
       const response = await localDB.post(doc);
-      console.log('새로운 주문: ', response);
+      // console.log('새로운 주문: ', response);
     } catch (err) {
       console.error('Error:', err);
     }
