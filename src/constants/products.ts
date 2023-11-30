@@ -48,21 +48,6 @@ export const PRODUCT_LIST: { data: ProductType[] } = {
       code: 'CJUGH-240053037',
     },
     {
-      name: '시저 샐러드',
-      languageName: {
-        ko: '시저 샐러드',
-        en: 'Caesar Salad',
-        jp: 'シーザーサラダ',
-        zh_hans: '凯撒沙拉',
-        zh_hant: '凱薩沙律',
-      },
-      code: 'CJUGH-240053024',
-      html: '바삭하게 구운 햄 및 브레드, 신선한 로메인 상추가 홈메이드 시저 드레싱과 어우러진 건강식 샐러드입니다.',
-      image: 'https://hyatt.static.torder.co.kr/INFRA_CAFE8002/goods/CJUGH-240053024/1676349655item_700X700.png',
-      price: 30000,
-      countryOfOrigin: '(베이컨:미국산)',
-    },
-    {
       name: '버섯 크림 수프',
       languageName: {
         ko: '버섯 크림 수프',

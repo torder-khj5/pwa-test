@@ -67,31 +67,6 @@ export const SAMPLE_CATEGORY: { data: CategoryType[] } = {
         },
         {
           categoryCode: '110720',
-          id: 'appetizer',
-          name: '에피타이저',
-          languageName: { ko: '에피타이저', en: 'Appetizer', jp: '前菜', zh_hans: '前菜', zh_hant: '前菜' },
-          code: '110722',
-          productList: [
-            {
-              name: '시저 샐러드',
-              languageName: {
-                ko: '시저 샐러드',
-                en: 'Caesar Salad',
-                jp: 'シーザーサラダ',
-                zh_hans: '凯撒沙拉',
-                zh_hant: '凱薩沙律',
-              },
-              code: 'CJUGH-240053024',
-              html: '바삭하게 구운 햄 및 브레드, 신선한 로메인 상추가 홈메이드 시저 드레싱과 어우러진 건강식 샐러드입니다.',
-              image:
-                'https://hyatt.static.torder.co.kr/INFRA_CAFE8002/goods/CJUGH-240053024/1676349655item_700X700.png',
-              price: 30000,
-              countryOfOrigin: '(베이컨:미국산)',
-            },
-          ],
-        },
-        {
-          categoryCode: '110720',
           id: 'soup',
           name: '수프',
           languageName: { ko: '수프', en: 'Soup', jp: 'スープ', zh_hans: '汤', zh_hant: '湯' },
