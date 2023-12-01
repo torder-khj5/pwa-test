@@ -68,7 +68,7 @@ export default function TotalOrder() {
   const calculateQuantityAndTotal = (orderList: ProductType[]) => {
     const groupedOrders: Record<string, { items: OrderItemType[]; totalPrice: number }> = {};
 
-    orderList.forEach(({ name, price, tableNum }) => {
+    orderList.forEach(({ name, price, tableNum = 0 }) => {
       const existingItem = groupedOrders[tableNum]?.items.find((item) => item.name === name);
 
       if (existingItem) {
@@ -104,7 +104,7 @@ export default function TotalOrder() {
       // 각 테이블 번호 별로 주문 내역 페이지를 구성
       return processedOrderList.map(({ tableNum, items, totalPrice }, index) => (
         <S.TableInfo key={`table-${tableNum}`}>
-          <Typography tag="h5" fontWeight={600} style={{ padding: '10px 20px' }}>
+          <Typography tag={'h5'} fontWeight={600} style={{ padding: '10px 20px' }}>
             {`테이블 ${tableNum}`}
           </Typography>
           {items.map(({ name, price, quantity, total }, itemIndex) => (

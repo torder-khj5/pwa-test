@@ -106,8 +106,6 @@ export const usePouchDBAction = (): PouchDBAction => ({
     try {
       const res = await usePouchDBStore.getState().localDB?.post(product);
       console.log('새로운 주문: ', res);
-      // await usePouchDBAction().getAllDocs();
-      // console.log('getAllDocs: ');
     } catch (err) {
       console.error(err);
     }

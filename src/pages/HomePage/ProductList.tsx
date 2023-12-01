@@ -1,10 +1,8 @@
-import { type OrderType } from '@type/orderType.ts';
 import { type ProductType } from '@type/categoryType.ts';
 import { useTableSelector } from '@store/useTableStore.ts';
 import { usePouchDBAction } from '@store/usePouchDBStore.ts';
 import TotalOrder from '@pages/HomePage/TotalOrder';
 import ImageCard from '@pages/HomePage/ImageCard';
-import BottomBar from '@pages/HomePage/BottomBar';
 import { PRODUCT_LIST } from '@constants/products.ts';
 import Typography from '@components/Typography';
 import { CommonButton } from '@components/CommonButton';
@@ -55,13 +53,13 @@ export default function ProductList() {
   };
 
   const requestOrder = () => {
-    console.log('주문입력');
+    // console.log('주문입력');
     const addData = { ...selectProduct, date: new Date(), tableNum: selectTable };
     addOrderData(addData).then(async () => {
       await getAllDocs();
     });
     setIsModalOpen(false);
-    console.log('주문입력 done');
+    // console.log('주문입력 done');
   };
 
   if (isLoading) {
