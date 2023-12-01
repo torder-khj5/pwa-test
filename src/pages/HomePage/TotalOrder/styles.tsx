@@ -101,6 +101,11 @@ export const TableContents = styled.div`
   width: 100%;
 `;
 
+export const TableInfo = styled.div`
+  padding: 0 var(--border-radius-border-radius-l, 16px);
+  border: 1px solid ${palette.gray_20};
+`;
+
 export const TableRow = styled.div`
   display: flex;
   align-items: flex-start;
@@ -142,7 +147,8 @@ export const OrderModalTotalPriceArea = styled.div`
   justify-content: space-between;
   height: 59px;
   padding: 0 var(--border-radius-border-radius-l, 16px);
+  margin-bottom: 20px;
   background: #fff;
 
-  border-top: 2px solid var(--gray-gray-100, #ccd2dd);
+  border-top: 1px solid var(--gray-gray-20, #f1f4f7);
 `;

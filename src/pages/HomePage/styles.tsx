@@ -5,8 +5,11 @@ export const HomeContainer = styled.div`
   display: flex;
   flex: 3;
   flex-direction: column;
+  justify-content: center;
+  height: 100vh;
   padding: 1.5625vw 2.3438vw 0;
   overflow: auto;
+  background-color: ${palette.gray_20};
 `;
 
 export const ProductContainer = styled.div`

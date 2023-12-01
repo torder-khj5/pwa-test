@@ -8,7 +8,7 @@ import { CloseButton } from '@components/@headless/Modal/CloseButton.tsx';
 import Modal from '@components/@headless/Modal';
 import bill from '@assets/icons/icon-bill.svg';
 import * as S from './styles.tsx';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 interface OrderItemType {
   name: string;
@@ -45,7 +45,6 @@ export default function TotalOrder() {
   const { getDoc } = usePouchDBAction();
   const { orderList } = useOrderSelector(['orderList']);
   const { orderIdList } = usePouchDBSelector(['orderIdList']);
-  const [total, setTotal] = useState<number>(0);
 
   const fetchData = async () => {
     try {
@@ -63,15 +62,6 @@ export default function TotalOrder() {
       }
     } catch (error) {
       console.error('데이터를 불러오는 중 오류 발생:', error);
-    }
-  };
-
-  const calculateTotal = () => {
-    if (Array.isArray(orderList) && orderList.length > 0) {
-      const totalPrice = orderList.reduce((acc, { price }) => acc + price, 0);
-      setTotal(totalPrice);
-    } else {
-      setTotal(0);
     }
   };
 
@@ -105,27 +95,17 @@ export default function TotalOrder() {
 
   useEffect(() => {
     fetchData();
-    calculateTotal();
   }, [orderIdList]);
 
   const renderOrderList = () => {
     if (Array.isArray(orderList) && orderList.length > 0) {
       const processedOrderList: ProcessedOrderType[] = calculateQuantityAndTotal(orderList);
-      console.log('processedOrderList: ', processedOrderList);
-      // return processedOrderList.map(({ tableNum, items, totalPrice }, index) => (
-      //   <OrderItem
-      //     key={`order-${index}-${tableNum}`}
-      //     name={items[0].name}
-      //     price={items[0].price}
-      //     quantity={items[0].quantity}
-      //     total={items[0].total}
-      //   />
-      // ));
+      // console.log('processedOrderList: ', processedOrderList);
       // 각 테이블 번호 별로 주문 내역 페이지를 구성
       return processedOrderList.map(({ tableNum, items, totalPrice }, index) => (
-        <div key={`table-${tableNum}`}>
-          <Typography tag="h6" fontWeight={700}>
-            {`테이블 ${tableNum} 주문 내역`}
+        <S.TableInfo key={`table-${tableNum}`}>
+          <Typography tag="h5" fontWeight={600} style={{ padding: '10px 20px' }}>
+            {`테이블 ${tableNum}`}
           </Typography>
           {items.map(({ name, price, quantity, total }, itemIndex) => (
             <OrderItem
@@ -136,11 +116,11 @@ export default function TotalOrder() {
               total={total}
             />
           ))}
-          <div>
+          <S.OrderModalTotalPriceArea>
             <Typography tag="h5">총 합계</Typography>
             <Typography tag="h5">{totalPrice.toLocaleString()}원</Typography>
-          </div>
-        </div>
+          </S.OrderModalTotalPriceArea>
+        </S.TableInfo>
       ));
     } else {
       return (
@@ -184,10 +164,6 @@ export default function TotalOrder() {
                 </S.TableHeader>
                 <S.TableContents>{renderOrderList()}</S.TableContents>
               </S.OrderModalListTable>
-              {/* <S.OrderModalTotalPriceArea> */}
-              {/*  <Typography tag="h5">합계</Typography> */}
-              {/*  <Typography tag="h5">{total.toLocaleString()}원</Typography> */}
-              {/* </S.OrderModalTotalPriceArea> */}
             </S.OrderModalContents>
           </S.OrderModalWrapper>
         </Modal.Content>

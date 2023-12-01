@@ -22,7 +22,7 @@ export const HeaderTableName = styled.h4`
   align-items: center;
   justify-content: center;
 
-  width: 94px;
+  width: 100px;
   height: 47px;
   font-size: 28px;
   font-weight: 500;
