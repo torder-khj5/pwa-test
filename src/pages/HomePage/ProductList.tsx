@@ -72,7 +72,7 @@ export default function ProductList() {
 
   return (
     <>
-      <Toaster position={'bottom-center'} />
+      <Toaster position={'top-center'} />
       <S.ProductContainer>
         {products?.map((product: ProductType, index) => {
           const { image, name, price } = product;
