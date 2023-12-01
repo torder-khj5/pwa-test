@@ -10,6 +10,7 @@ import ModalContent from '@components/@headless/Modal/Content.tsx';
 import Modal from '@components/@headless/Modal';
 import { requestProductList } from '@api/categories.ts';
 import * as S from './styles.tsx';
+import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -59,6 +60,7 @@ export default function ProductList() {
       await getAllDocs();
     });
     setIsModalOpen(false);
+    notify();
     // console.log('주문입력 done');
   };
 
@@ -66,8 +68,11 @@ export default function ProductList() {
     return <div></div>;
   }
 
+  const notify = () => toast.success('주문이 완료되었습니다.');
+
   return (
     <>
+      <Toaster position={'bottom-center'} />
       <S.ProductContainer>
         {products?.map((product: ProductType, index) => {
           const { image, name, price } = product;
