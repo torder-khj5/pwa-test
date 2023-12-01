@@ -11,7 +11,7 @@ const tableStore = () => ({
   selectTable: '0',
 });
 
-export const useTableStore = create(devtools(tableStore, { name: 'tableStore' }));
+export const useTableStore = create(persist(devtools(tableStore, { name: 'tableStore' }), { name: 'table' }));
 
 export const useTableAction = (): InitAction => ({
   setSelectTable: (tableNum: string) => {
